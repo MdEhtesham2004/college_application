@@ -17,7 +17,9 @@ def create_app():
     CORS(app, resources={r"/*": {"origins": "*"}})
     app.secret_key = 'clg_application'  # Replace with a strong, unique key
 
-    socketio = SocketIO(app)
+    # socketio = SocketIO(app)
+    socketio = SocketIO(app, cors_allowed_origins="*", async_mode="eventlet", ping_timeout=10)
+
 
 
 
