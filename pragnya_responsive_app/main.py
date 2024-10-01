@@ -6,7 +6,6 @@ from werkzeug.utils import secure_filename
 import uuid
 import time 
 from .apis import WeatherReport,Quotes
-from flask_socketio import SocketIO, emit, join_room, leave_room
 
 weather = WeatherReport()
 quotes = Quotes()
@@ -156,12 +155,3 @@ def display_image(filename):
 
 
 
-@main.route('/chat')
-def chat():
-    user = current_user.name
-    return render_template('chat.html',user=user)
-
-@main.route('/leave_room')
-def leave_room():
-    time.sleep(0.9)
-    return render_template('cards.html')
