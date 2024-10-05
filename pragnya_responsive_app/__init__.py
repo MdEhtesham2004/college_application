@@ -4,7 +4,6 @@ from flask_login import LoginManager
 from .main import main as main_blueprint
 from .auth import auth as auth_blueprint
 from flask_migrate import Migrate
-from flask_socketio import SocketIO, emit, join_room, leave_room
 
 
 db = SQLAlchemy()
