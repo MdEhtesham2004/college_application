@@ -1,1 +1,1 @@
-https://college-application-pl9i.onrender.com/account
+https://college-application-pl9i.onrender.com
