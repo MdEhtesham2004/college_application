@@ -89,7 +89,6 @@ def account():
     weather_condition = weather.get_weather()
     return render_template('account.html', user=user_details, weather_condition=weather_condition)
 
-
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'heic', 'heif'}
 
 # Function to check allowed extensions
