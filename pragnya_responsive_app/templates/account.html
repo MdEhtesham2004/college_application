@@ -225,8 +225,10 @@
 
                     {% if current_user.profile_pic %}
 
-                    <img src="{{ url_for('main.display_image', filename=current_user.profile_pic) }}"
-                        alt="Uploaded Image" width="200px" height="150px">
+                    <!-- <img src="{{ url_for('main.display_image', filename=current_user.profile_pic) }}"
+                        alt="Uploaded Image" width="200px" height="150px"> -->
+                        <img src="{{ user.profile_pic }}" alt="Profile Picture">
+
                     {% endif %}
                 </div>
                 <div class="matter">

@@ -95,7 +95,9 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'heic', 'heif'}
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-FILEPATH = ""
+# FILEPATH = ""
+FILEPATH = '/tmp/uploads'
+
 
 @main.route('/upload', methods=['POST'])
 def upload_file():
@@ -108,7 +110,9 @@ def upload_file():
         return "No selected file"
     
     
-    upload_folder = current_app.config.get('UPLOAD_FOLDER', 'uploads')
+    # upload_folder = current_app.config.get('UPLOAD_FOLDER', 'uploads')
+    upload_folder = '/tmp/uploads'  # Use Render's writable directory
+
     if not os.path.exists(upload_folder):
         os.makedirs(upload_folder)
     
@@ -127,7 +131,8 @@ def upload_file():
 
     if user:
         # Update the grade for the existing user
-        user.profile_pic=filename
+        # user.profile_pic=filename
+        user.profile_pic = f"/uploads/{filename}"  # Save path for retrieval
         db.session.commit()  # Commit the changes
         # image_url = url_for('', filename=user.image_path.split('pragnya_responsive_app/')[1])
         image_url = user.profile_pic        
@@ -147,8 +152,11 @@ def upload_file():
 @main.route('/uploads/<filename>', methods=['GET', 'POST'])
 def display_image(filename):
     # Serve the file from the 'uploads' directory inside the project
-    upload_folder = current_app.config['UPLOAD_FOLDER']
+    # upload_folder = current_app.config['UPLOAD_FOLDER']
+    # return send_from_directory(upload_folder, filename)
+    upload_folder = '/tmp/uploads'
     return send_from_directory(upload_folder, filename)
+
 
 
 
