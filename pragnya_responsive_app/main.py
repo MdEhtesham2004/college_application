@@ -1,4 +1,4 @@
-from flask import Flask,Blueprint, render_template,request,current_app,send_from_directory,redirect,url_for,Response
+from flask import Flask,Blueprint, render_template,request,current_app,send_from_directory,redirect,url_for,Response,send_file
 from flask_login import login_required,current_user
 import requests 
 import os 
@@ -143,6 +143,10 @@ FILEPATH = ""
 #         return 'Invalid file format'
 
 
+@main.route('/courses')
+def courses():
+    return render_template('courses.html')
+
 
 @main.route('/upload',methods=['POST'])
 def upload():
@@ -184,7 +188,9 @@ def get_img(id):
     from . import db 
     image = Image.query.filter_by(user_id=id).first()
     if not image or not image.img:
-        return f"no image with {id} as  id ", 404
+        default_img_path = 'static/images_folder/default-img.png'
+        return redirect(url_for('static', filename='images_folder/default-img.png'))
+
 
     return Response(image.img,mimetype=image.mimetype)
 

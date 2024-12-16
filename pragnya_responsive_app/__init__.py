@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from .main import main as main_blueprint
 from .auth import auth as auth_blueprint
-from flask_migrate import Migrate
+from flask_migrate import Migrate, upgrade
 
 
 db = SQLAlchemy()
@@ -42,6 +42,7 @@ def create_app():
     db.init_app(app=app)
     with app.app_context():
         db.create_all()  # Creates the database tables
+    
     
 
 

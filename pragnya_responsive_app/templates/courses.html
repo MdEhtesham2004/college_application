@@ -1,0 +1,758 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .heading {
+            font-size: 2em;
+            font-weight: bolder;
+            width: 100vw;
+            margin-top: 2em;
+            text-align: center;
+
+        }
+
+        .Roadmap {
+            color: blue;
+        }
+
+        /*
+        @media only  screen and (max-width:768px) {
+            .heading{
+                font-size: 1em;
+                margin-top: 0;
+                max-width: 60vw;
+            
+            }
+        }*/
+    </style>
+</head>
+
+<body>
+    <div class="main_container">
+        <div class="heading ">
+            <h1>Master Fronted | Zero 2 Hero</h1>
+            <!-- image of roadmap.sh  -->
+            <a href="https://roadmap.sh/frontend" class="Roadmap">Click Here :- Frontend Roadmap</a>
+        </div>
+        <section class="text-gray-600 body-font">
+            <div class="container px-5 py-24 mx-auto flex flex-wrap">
+                <div class="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
+                    <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+                        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">
+                        1</div>
+                    <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                        <div
+                            class="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
+                            <!-- <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg> -->
+                            <img src="{{ url_for('static' ,filename='images_folder/html5.webp')  }}" alt="Html5 logo">
+                        </div>
+                        <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                            <h2 class="font-medium title-font text-gray-900 mb-1 text-xl"> HTML5</h2>
+                            <p class="leading-relaxed">HTML (HyperText Markup Language) defines the structure and
+                                content of a webpage.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+                    <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+                        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">
+                        2</div>
+                    <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                        <div
+                            class="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
+                            <!-- <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg> -->
+                            <img src="{{ url_for('static' ,filename='images_folder/css3.webp')  }}" alt="css3 logo">
+                        </div>
+                        <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                            <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">CSS3</h2>
+                            <p class="leading-relaxed"> CSS (Cascading Style Sheets) is used to control the layout,
+                                design, and appearance of web pages.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+                    <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+                        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">
+                        3</div>
+                    <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                        <div
+                            class="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
+                            <!-- <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+                                <circle cx="12" cy="5" r="3"></circle>
+                                <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
+                            </svg> -->
+                            <img src="{{ url_for('static' ,filename='images_folder/js.webp')  }}" alt="js logo">
+                        </div>
+                        <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                            <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">JAVASCRIPT</h2>
+                            <p class="leading-relaxed">JavaScript is a programming language used to create interactive
+                                and dynamic behavior on websites.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
+                    <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+                        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">
+                        4</div>
+                    <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                        <div
+                            class="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
+                            <!-- <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg> -->
+                            <img src="{{ url_for('static' ,filename='images_folder/react2.webp')  }}" alt="React logo">
+                        </div>
+                        <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                            <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">REACT</h2>
+                            <p class="leading-relaxed"> React is a JavaScript library for building user interfaces,
+                                particularly single-page applications (SPAs).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Part 2 -->
+
+
+        <section class="text-gray-600 body-font">
+            <div class="container px-5 py-24 mx-auto">
+                <div class="flex flex-wrap -m-4">
+                    <div class="p-4 md:w-1/3">
+                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                                src=" {{ url_for('static' ,filename='images_folder/html720.webp')  }}" alt="blog">
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Frontend
+                                </h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">HTML 5</h1>
+                                <p class="leading-relaxed mb-3">
+                                    HTML (HyperText Markup Language) defines the structure and content of a webpage
+                                </p>
+                                <div class="flex items-center flex-wrap ">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                                        href="https://youtu.be/k2DSi1zGEc8?si=sD1NwaZHul4MgHrq">View Course
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <!-- <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 md:w-1/3">
+                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                                src="{{ url_for('static' ,filename='images_folder/css720.jpeg')  }}" alt="blog">
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Frontend
+                                </h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">CSS 3</h1>
+                                <p class="leading-relaxed mb-3"> CSS (Cascading Style Sheets) is used to control the
+                                    layout, design, and appearance of web pages.
+                                </p>
+                                <div class="flex items-center flex-wrap">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                                        href="https://youtu.be/Edsxf_NBFrw?si=G9YJUw-Oe4rXpxGD">View
+                                        Course
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <!-- <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 md:w-1/3">
+                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                                src="{{ url_for('static' ,filename='images_folder/JS7205.jpeg')  }}" alt="blog">
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Frontend
+                                </h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">JAVASCRIPT</h1>
+                                <p>
+                                    JavaScript is a
+                                    programming language used to create interactive and dynamic behavior on websites.
+                                </p>
+                                <div class="flex items-center flex-wrap ">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                                        href="https://www.youtube.com/playlist?list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37">View
+                                        Course
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <!-- <span
+                                            class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                            <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg>1.2K
+                                        </span>
+                                        <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                            <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                                </path>
+                                            </svg>6
+                                        </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+    <div class="container2">
+
+        <h1 class="heading">Basic and Logic Building Programming Languages :- </h1>
+        <section class="text-gray-600 body-font">
+            <div class="container px-5 py-24 mx-auto">
+                <div class="flex flex-wrap -m-4">
+
+                    <div class="p-4 md:w-1/3">
+                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                                src="{{ url_for('static' ,filename='images_folder/c7205.jpeg')  }}" alt="blog">
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                                    Programming
+                                </h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">C language</h1>
+                                <p class="leading-relaxed mb-3"> C is a powerful, low-level programming language known
+                                    for its efficiency and control over system resources. It is widely used for system
+                                    programming, embedded systems, and developing operating systems.
+                                </p>
+                                <div class="flex items-center flex-wrap">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                                        href="https://youtu.be/aZb0iu4uGwA?si=4b1Hk12ieW5gMyJq">View
+                                        Course
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <!-- <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 md:w-1/3">
+                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                                src="{{ url_for('static' ,filename='images_folder/c++7203.png')  }}" alt="blog">
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                                    Programming
+                                </h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">C++</h1>
+                                <p>C++ is an object-oriented programming language that extends C, offering features
+                                    like classes and polymorphism. It is widely used for game development, system
+                                    programming, and performance-critical applications. </p>
+                                <div class="flex items-center flex-wrap ">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                                        href="https://youtube.com/playlist?list=PLu71SKxNbfoCPfgKZS8UE0MDuwiKvL8zi&si=5Bex9ptbtWEpbiD5">View
+                                        Course
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <!-- <span
+                                            class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                            <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg>1.2K
+                                        </span>
+                                        <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                            <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                                </path>
+                                            </svg>6
+                                        </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 md:w-1/3">
+                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                                src=" {{ url_for('static' ,filename='images_folder/ds720.jpeg')  }} " alt="blog">
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Backend
+                                </h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Data Structures in C and
+                                    C++</h1>
+                                <p class="leading-relaxed mb-3">
+                                    Data structures in C and C++ are fundamental concepts that organize and manage data
+                                    efficiently, enabling optimized operations like storage, retrieval, and processing.
+                                    Common examples include arrays, linked lists, stacks, queues, trees, and graphs,
+                                    often implemented manually in C/C++.
+                                </p>
+                                <div class="flex items-center flex-wrap ">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                                        href="https://youtube.com/playlist?list=PLfqMhTWNBTe137I_EPQd34TsgV6IO55pt&si=Ckw-o7u2TWclSaqR">View
+                                        Course
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <!-- <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h1 class="heading">Python Full Stack :-</h1>
+
+
+                    <div class="p-4 md:w-1/3">
+                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                                src="{{ url_for('static' ,filename='images_folder/python720.webp')  }}" alt="blog">
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Backend
+                                </h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Python</h1>
+                                <p class="leading-relaxed mb-3">
+                                    Python is a high-level, easy-to-read programming language known for its simplicity
+                                    and versatility. It is widely used in web development, data science, AI, and more,
+                                    supported by extensive libraries.
+                                </p>
+                                <div class="flex items-center flex-wrap ">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                                        href="https://youtube.com/playlist?list=PLu71SKxNbfoBsMugTFALhdLlZ5VOqCg2s&si=JZoTmjqS177zPowh">View
+                                        Course
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <!-- <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 md:w-1/3">
+                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                                src="{{ url_for('static' ,filename='images_folder/flask7203.png')  }}" alt="blog">
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Backend
+                                </h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Flask</h1>
+                                <p class="leading-relaxed mb-3">
+                                    Flask is a lightweight Python web framework designed for simplicity and flexibility.
+                                    It provides essential tools for web development while allowing developers to choose
+                                    additional components as needed.
+                                </p>
+                                <div class="flex items-center flex-wrap ">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                                        href="https://youtube.com/playlist?list=PLu71SKxNbfoBsMugTFALhdLlZ5VOqCg2s&si=JZoTmjqS177zPowh">View
+                                        Course
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <!-- <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 md:w-1/3">
+                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                                src="{{ url_for('static' ,filename='images_folder/django720.webp')  }}" alt="blog">
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Backend
+                                </h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Django</h1>
+                                <p class="leading-relaxed mb-3">
+                                    Django is a high-level Python web framework that simplifies web development with its
+                                    built-in tools and scalability. It follows the "batteries-included" philosophy,
+                                    offering features like authentication, ORM, and admin panel out of the box.
+                                </p>
+                                <div class="flex items-center flex-wrap ">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                                        href="https://youtube.com/playlist?list=PLu71SKxNbfoDOf-6vAcKmazT92uLnWAgy&si=VS_mkVrWLbv1lKDt">View
+                                        Course
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <!-- <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <h1 class="heading">JAVA Full Stack :-</h1>
+
+
+                    <div class="p-4 md:w-1/3">
+                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                                src="{{ url_for('static' ,filename='images_folder/java720.webp')  }}" alt="blog">
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Backend
+                                </h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">JAVA</h1>
+                                <p class="leading-relaxed mb-3">
+                                    Java is a versatile, object-oriented programming language known for its platform
+                                    independence through the JVM. It is widely used in enterprise applications, Android
+                                    development, and backend systems.
+                                </p>
+                                <div class="flex items-center flex-wrap ">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                                        href="https://youtube.com/playlist?list=PLA3GkZPtsafY62QhQ030p85HAer0pFDdr&si=Ui3jQkLwpJ50F9E8">View
+                                        Course
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <!-- <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 md:w-1/3">
+                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                                src="{{ url_for('static' ,filename='images_folder/spring720.webp')  }}" alt="blog">
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Backend
+                                </h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Spring Boot</h1>
+                                <p class="leading-relaxed mb-3">
+                                    Spring Boot is a Java framework that simplifies the development of standalone,
+                                    production-ready applications. It offers features like embedded servers,
+                                    auto-configuration, and seamless integration with the Spring ecosystem.
+                                </p>
+                                <div class="flex items-center flex-wrap ">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                                        href="https://youtube.com/playlist?list=PLA3GkZPtsafacdBLdd3p1DyRd5FGfr3Ue&si=DGoxVZo132tirMGF">View
+                                        Course
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <!-- <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 md:w-1/3">
+                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                                src="{{ url_for('static' ,filename='images_folder/dsjava720.webp')  }}" alt="blog">
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Backend
+                                </h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">DSA in JAVA </h1>
+                                <p class="leading-relaxed mb-3">
+                                    DSA (Data Structures and Algorithms) in Java focuses on organizing and processing
+                                    data efficiently using Java's features. It includes concepts like arrays, linked
+                                    lists, stacks, queues, trees, graphs, and algorithmic problem-solving.
+                                </p>
+                                <div class="flex items-center flex-wrap ">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                                        href="https://youtube.com/playlist?list=PLA3GkZPtsafYzRj2lk6OyquJtRXoDLR_S&si=iTwYjhEZd3lJYwaC">View
+                                        Course
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <!-- <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h1 class="heading">Databases SQL && NO-SQL :-</h1>
+
+                    <div class="p-4 md:w-1/3">
+                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                                src="{{ url_for('static' ,filename='images_folder/dsjava720.webp')  }}" alt="blog">
+                            <div class="p-6">
+                                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Datbase
+                                </h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">DSA in JAVA </h1>
+                                <p class="leading-relaxed mb-3">
+                                    DSA (Data Structures and Algorithms) in Java focuses on organizing and processing
+                                    data efficiently using Java's features. It includes concepts like arrays, linked
+                                    lists, stacks, queues, trees, graphs, and algorithmic problem-solving.
+                                </p>
+                                <div class="flex items-center flex-wrap ">
+                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+                                        href="https://youtube.com/playlist?list=PLA3GkZPtsafYzRj2lk6OyquJtRXoDLR_S&si=iTwYjhEZd3lJYwaC">View
+                                        Course
+                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
+                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                    <!-- <span
+                                        class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                        </svg>1.2K
+                                    </span>
+                                    <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                                        <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path
+                                                d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                                            </path>
+                                        </svg>6
+                                    </span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>
+
+
+{% endblock %}
