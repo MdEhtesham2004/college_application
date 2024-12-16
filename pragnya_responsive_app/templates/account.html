@@ -222,15 +222,10 @@
                 <div class="photo">
                     <!-- replace photo with profile_pic -->
                     <h1> Profile Picture</h1>
-
-                    {% if current_user.profile_pic %}
-
-                    <img src="{{ url_for('main.display_image', filename=current_user.profile_pic) }}"
-                        alt="Uploaded Image" width="200px" height="150px">
-
-                        <!-- <img src="{{ url_for('get_image', id=current_user.id) }}" alt="Profile Picture"> -->
-
-                    {% endif %}
+                    <h2>welcome,  {{  current_user.name }}</h2>
+                     <div class="pic">
+                        <img src="{{ url_for('main.get_img', id=current_user.id) }}" alt="uploaded Image"  width="200px" height="150px">
+                    </div>
                 </div>
                 <div class="matter">
                     <!-- repalce matter with user_data -->
@@ -241,6 +236,7 @@
                     <p>Username: {{ current_user.name }}</p>
                     <p>Email: {{ current_user.email }}</p>
                     <p>Latest Grade: {{ current_user.student_grade }} </p>
+                    <p>imgname : {{ current_user.imgname }}</p>
                     <!-- <p>profile-pic : {{ current_user.profile_pic }} </p> -->
                     <!-- Add more fields as needed -->
 

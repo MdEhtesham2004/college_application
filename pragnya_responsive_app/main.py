@@ -150,12 +150,15 @@ def upload():
     from . import db 
     pic = request.files['profile_pic']
     if not pic:
+        # return redirect(url_for('static', filename='default_profile.jpg'))
         return "no pic uploaded ", 400 
     if pic:
         img_name = secure_filename(pic.filename)
         mimetype = pic.mimetype
         img_data = pic.read()  # Read the image binary data
         user_id = current_user.id  # Logged-in user ID
+
+        
 
         existing_image = Image.query.filter_by(user_id=user_id).first()
 
@@ -171,22 +174,16 @@ def upload():
             new_image = Image(user_id=user_id, img=img_data, imgname=img_name, mimetype=mimetype)
             db.session.add(new_image)
             db.session.commit()
-
-    # img = Image(img=pic.read(),mimetype=mimetype,imgname=filename)
-
- 
-    # db.session.add(img)
-    # db.session.commit()
-
+            
     return "image has been uploaded ", 200 
 
      
-@main.route("/<int:id>")
+@main.route("/image/<int:id>")
 def get_img(id):
     from .models import Image
     from . import db 
     image = Image.query.filter_by(user_id=id).first()
-    if not image:
+    if not image or not image.img:
         return f"no image with {id} as  id ", 404
 
     return Response(image.img,mimetype=image.mimetype)
