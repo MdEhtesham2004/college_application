@@ -95,52 +95,6 @@ def account():
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'heic', 'heif'}
 
-# Function to check allowed extensions
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-FILEPATH = ""
-
-# @main.route('/upload', methods=['POST'])
-# def upload_file():
-#     if 'profile_pic' not in request.files:
-#         return "No file part"
-    
-#     file = request.files['profile_pic']
-    
-#     if file.filename == '':
-#         return "No selected file"
-    
-    
-#     upload_folder = current_app.config.get('UPLOAD_FOLDER', 'uploads')
-#     if not os.path.exists(upload_folder):
-#         os.makedirs(upload_folder)
-    
-    
-#     if file and allowed_file(file.filename):
-#         filename =  secure_filename(file.filename)
-#         file_path = os.path.join(upload_folder, filename)
-#         file.save(file_path)
-   
-#     from .models import User 
-#     from . import db 
-        
-            
-#     email = current_user.email  
-#     user = User.query.filter_by(email=email).first()
-
-#     if user:
-#         # Update the grade for the existing user
-#         user.profile_pic=filename
-#         db.session.commit()  # Commit the changes
-#         # image_url = url_for('', filename=user.image_path.split('pragnya_responsive_app/')[1])
-#         image_url = user.profile_pic        
-#         # return redirect(url_for('main.display_image', filename=filename))
-#         # return render_template('accounts.html', filename=filename)
-#         return render_template('account.html', filename=image_url)
-    
-#     else:
-#         return 'Invalid file format'
 
 
 @main.route('/courses')
@@ -204,7 +158,6 @@ def display_image(filename):
     # Serve the file from the 'uploads' directory inside the project
     upload_folder = current_app.config['UPLOAD_FOLDER']
     return send_from_directory(upload_folder, filename)
-
 
 
 

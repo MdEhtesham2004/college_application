@@ -131,7 +131,14 @@
             display: block;
         }
 
-       
+        p,
+        h1,
+        h2 {
+            font-weight: bolder;
+            font-style: oblique;
+        }
+
+
 
 
 
@@ -220,11 +227,12 @@
                 <div class="photo">
                     <!-- replace photo with profile_pic -->
                     <h1> Profile Picture</h1>
-                    <h2>welcome,  {{  current_user.name }}</h2>
+                    <h2>welcome, {{ current_user.name }}</h2>
                     <!-- <img src="{{ url_for('static', filename='images_folder/default-img.png') }}" width="200px" height="150px" id="default-img"> -->
 
-                     <div class="pic">
-                        <img src="{{ url_for('main.get_img', id=current_user.id) }}" alt="uploaded Image"  width="200px" height="150px">
+                    <div class="pic">
+                        <img src="{{ url_for('main.get_img', id=current_user.id) }}" alt="uploaded Image" width="200px"
+                            height="150px">
                     </div>
                 </div>
                 <div class="matter">
@@ -269,6 +277,14 @@
             <button type="submit">Upload</button>
         </form>
 
+        <div class="setting_options">
+            <select name="Options" id="options-dropdown" onchange="handleOptionChange()">
+                <option value="">Select an Option</option>
+                <option value="remove-dp">Remove Dp</option>
+                <!-- Add other options here if needed -->
+            </select>
+        </div>
+
     </div>
 
 
@@ -280,6 +296,15 @@
             sett_toggle.classList.toggle('setting_toggle')
             console.log(sett_toggle)
         });
+        function handleOptionChange() {
+            var selectedOption = document.getElementById('options-dropdown').value;
+
+            if (selectedOption === 'remove-dp') {
+                // Your logic to remove the profile picture
+                alert("Removing profile picture...");
+                
+            }
+        }
     </script>
 </body>
 
