@@ -71,6 +71,7 @@
             /* border: 2px solid red; */
             /* text-align: right; */
             /* margin-bottom: 2em; */
+            mix-blend-mode: darken;
 
         }
 
@@ -278,9 +279,10 @@
         </form>
 
         <div class="setting_options">
+            <h2>Options:</h2>
             <select name="Options" id="options-dropdown" onchange="handleOptionChange()">
                 <option value="">Select an Option</option>
-                <option value="remove-dp">Remove Dp</option>
+                <option value="remove-dp"> <a href="{{ url_for('main.get_default_img') }}">  Remove Dp </a</option>
                 <!-- Add other options here if needed -->
             </select>
         </div>
@@ -302,6 +304,8 @@
             if (selectedOption === 'remove-dp') {
                 // Your logic to remove the profile picture
                 alert("Removing profile picture...");
+                alert("please reload to reflect the changes...");
+                
                 
             }
         }
