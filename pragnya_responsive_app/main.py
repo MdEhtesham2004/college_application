@@ -1,13 +1,11 @@
-from flask import Flask,Blueprint, render_template,request,current_app,send_from_directory,redirect,url_for,Response,send_file
+from flask import Flask,Blueprint, render_template,request,current_app,send_from_directory,redirect,url_for,Response,send_file,session,flash
 from flask_login import login_required,current_user
 import requests 
 import os 
 from werkzeug.utils import secure_filename
 import uuid
 import time 
-from .apis import WeatherReport
 
-weather = WeatherReport()
 
 main = Blueprint('main',__name__)
 
@@ -165,3 +163,50 @@ def display_image(filename):
 def get_default_img():
     default_img_path = 'static/images_folder/default-img.png'
     return redirect(url_for('static', filename='images_folder/default-img.png'))
+
+
+
+@main.route("/opt_validation")
+def otp():
+    return render_template("otp_validation.html")
+
+from .mail import Mail
+mail = Mail()
+
+show_email_input=True
+@main.route("/send_otp",methods=["POST"])
+def send_otp():
+    user_mail = request.form['email']
+    otp = mail.send_token(user_mail)
+    flash('OTP sent to your email successfully!', 'success')
+    session['otp'] = otp
+    return render_template("otp_validation.html", show_email_input=True)
+
+
+@main.route("/validate_otp",methods=['POST'])
+def validate_otp():
+    entered_otp =int(request.form['otp'])
+    if 'otp' in session and session['otp'] == int (entered_otp):
+        flash('OTP validated successfully!', 'success')
+        session.pop('otp', None)  # Clear the OTP from the session
+        return render_template("otp_validation.html",show_email_input=True)
+    else:
+        flash('Invalid OTP. Please try again.', 'danger')
+        print({f" failed otp {session.get('otp')}"})
+        # return redirect(url_for('otp'))
+        return render_template("otp_validation.html")
+
+@main.route("/update_password", methods=["POST"])
+def update_password():
+    new_password = request.form['new_password']
+    confirm_password = request.form['confirm_password']
+    if new_password == confirm_password:
+        # Update the user's password in the database
+        flash('Password updated successfully!', 'success')
+        # return redirect(url_for('login'))
+        # return render_template("otp_validation.html")
+        return "Success!"
+    else:
+        flash('Passwords do not match. Please try again.', 'danger')
+        # return redirect(url_for('otp'))
+        return render_template("otp_validation.html")
