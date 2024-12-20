@@ -5,6 +5,7 @@ import os
 from werkzeug.utils import secure_filename
 import uuid
 import time 
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 main = Blueprint('main',__name__)
@@ -168,19 +169,27 @@ def get_default_img():
 
 @main.route("/opt_validation")
 def otp():
-    return render_template("otp_validation.html")
+    return render_template("otp_validation.html",show_email_input=True,
+                           show_otp_input=False,
+                           show_password_input=False)
 
 from .mail import Mail
 mail = Mail()
 
-show_email_input=True
+# show_email_input=True
 @main.route("/send_otp",methods=["POST"])
 def send_otp():
-    user_mail = request.form['email']
+    user_mail = request.form['email_entered_reset_password']
+    session['user_mail'] = user_mail
     otp = mail.send_token(user_mail)
     flash('OTP sent to your email successfully!', 'success')
     session['otp'] = otp
-    return render_template("otp_validation.html", show_email_input=True)
+    return render_template(
+                            "otp_validation.html",
+                              show_email_input=False,
+                                show_otp_input=True,
+                                  show_password_input=False
+                            )
 
 
 @main.route("/validate_otp",methods=['POST'])
@@ -189,24 +198,89 @@ def validate_otp():
     if 'otp' in session and session['otp'] == int (entered_otp):
         flash('OTP validated successfully!', 'success')
         session.pop('otp', None)  # Clear the OTP from the session
-        return render_template("otp_validation.html",show_email_input=True)
+        return render_template(
+                                "otp_validation.html",
+                                 show_email_input=False,
+                                show_otp_input=False,
+                                show_password_input=True
+                                )
     else:
         flash('Invalid OTP. Please try again.', 'danger')
         print({f" failed otp {session.get('otp')}"})
         # return redirect(url_for('otp'))
-        return render_template("otp_validation.html")
+        return render_template(
+                                "otp_validation.html",
+                                show_email_input=False,
+                                  show_otp_input=True,
+                                    show_password_input=False
+                                )
+
+# @main.route("/update_password", methods=["POST"])
+# def update_password():
+#     from . import db 
+#     from . models import User
+
+#     new_password = request.form['new_password']
+#     confirm_password = request.form['confirm_password']
+#     if new_password == confirm_password:
+#         hashed_password = generate_password_hash(password=new_password,method='pbkdf2:sha256')
+#         email = request.form['email']
+#         user = User.query.filter_by(email=email).first()
+#         if user:
+#             user.password = hashed_password
+#             db.session.commit()   
+#         flash('Password updated successfully!', 'success')
+#         # return render_template("otp_validation.html")
+#         # current_user.password = new_password
+#         return redirect(url_for('auth.login'))
+#         # return "Success!"
+#     else:
+#         flash('Passwords do not match. Please try again.', 'danger')
+#         # return redirect(url_for('otp'))
+#         return render_template(
+#                                 "otp_validation.html",
+#                                   show_email_input=False,
+#                                     show_otp_input=True,
+#                                       show_password_input=True
+#                                 )
+    
+
 
 @main.route("/update_password", methods=["POST"])
 def update_password():
+    from . import db 
+    from . models import User
     new_password = request.form['new_password']
     confirm_password = request.form['confirm_password']
+    # email = request.form['email_entered_reset_pasword']  # Ensure email is retrieved correctly
+    email = session.get('user_mail')  # Retrieve the email from the session
+    print(f"Email from session: {email}")
+
+    if not email:
+        flash('Email is required to update the password.', 'danger')
+        return render_template("otp_validation.html", show_email_input=False, show_otp_input=False, show_password_input=True)
+
     if new_password == confirm_password:
-        # Update the user's password in the database
-        flash('Password updated successfully!', 'success')
-        # return redirect(url_for('login'))
-        # return render_template("otp_validation.html")
-        return "Success!"
+        hashed_password = generate_password_hash(password=new_password, method='pbkdf2:sha256')
+        user = User.query.filter_by(email=email).first()
+        if user:
+            user.password = hashed_password
+            db.session.commit()
+            flash('Password updated successfully!', 'success')
+            session.pop('user_mail', None)  
+            return redirect(url_for('auth.login'))
+        else:
+            flash('User not found.', 'danger')
+            return render_template("otp_validation.html",
+                                    show_email_input=True,
+                                        show_otp_input=True,
+                                        show_password_input=True)
     else:
         flash('Passwords do not match. Please try again.', 'danger')
-        # return redirect(url_for('otp'))
-        return render_template("otp_validation.html")
+        return render_template("otp_validation.html", 
+                                show_email_input=False,
+                                    show_otp_input=False,
+                                    show_password_input=True)
+    # except Exception as e:
+    #     flash(f'An error occurred: {str(e)}', 'danger')
+    #     return render_template("otp_validation.html", show_email_input=False, show_otp_input=False, show_password_input=True)
