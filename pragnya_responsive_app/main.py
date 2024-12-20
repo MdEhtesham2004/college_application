@@ -284,3 +284,11 @@ def update_password():
     # except Exception as e:
     #     flash(f'An error occurred: {str(e)}', 'danger')
     #     return render_template("otp_validation.html", show_email_input=False, show_otp_input=False, show_password_input=True)
+
+
+
+@main.route("/users")
+def show_users():
+    from . models import User
+    users = User.query.all()  # Fetch all user records from the database
+    return render_template("users.html", users=users)
