@@ -6,6 +6,31 @@
     <title>Users</title>
 </head>
 <body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}" style="color: red;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+
+    {% if show_admin_login %}
+    <h1>Admin Login</h1>
+    <form action="{{ url_for('main.validate_admin') }}" method="post">
+        <label for="username">Admin ID:</label>
+        <input type="text" id="admin_id" name="admin_id" required><br>
+        <label for="password">Admin Password:</label>
+        <input type="password" id="admin_password" name="admin_password" required><br>
+        <button type="submit">Login</button>
+    </form>
+    {% endif %}
+
+    
+    {% if show_user_details %}
     <h1>All Users</h1>
     <table border="1">
         <thead>
@@ -27,5 +52,6 @@
             {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 </body>
 </html> 

@@ -5,6 +5,7 @@
 
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='signup_style.css') }}">
+<script src="{{ url_for('static', filename='scripts/signupScript.js') }}"></script>
 <body>
     <div class="supermain">
         <!-- header start  -->
@@ -59,7 +60,7 @@
                         <input required="" placeholder="" type="password" class="input" name="confirmPassword" id="confirmPassword">
                         <span>Confirm password</span>
                     </label>
-                    <button class="submit"  type="submit"  onsubmit="return validateForm()">Submit</button>
+                    <button class="submit"  type="submit"  >Submit</button>
                     <p class="signin">Already have an acount ? <a href="{{ url_for( 'auth.login' ) }}">Login</a> </p>
                 </form>
 

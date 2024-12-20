@@ -7,11 +7,11 @@ function validateForm() {
     const Flash = document.getElementById('flash');
     
     // Name validation
-    const namePattern = /^[A-Za-z\s-]{2,50}$/;
-    if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
-      Flash.innerHTML='Please enter a valid first and last name.';
-      return false;
-    }
+    // const namePattern = /^[A-Za-z\s-]{2,50}$/;
+    // if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
+    //   Flash.innerHTML='Please enter a valid first and last name.';
+    //   return false;
+    // }
     
     // Email validation
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -27,11 +27,11 @@ function validateForm() {
       return false;
     }
     
-    // Confirm Password validation
-    if (password !== confirmPassword) {
-      Flash.innerHTML='Passwords do not match.';
-      return false;
-    }
+    // // Confirm Password validation
+    // if (password !== confirmPassword) {
+    //   Flash.innerHTML='Passwords do not match.';
+    //   return false;
+    // }
   
     // If all validations pass
     return true;

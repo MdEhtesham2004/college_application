@@ -162,8 +162,9 @@ def display_image(filename):
 
 @main.route('/default_img')
 def get_default_img():
-    default_img_path = 'static/images_folder/default-img.png'
-    return redirect(url_for('static', filename='images_folder/default-img.png'))
+    default_img_path ='{{ url_for("static", filename="images_folder/default-img.png") }}'
+    return render_template('account.html', default_img_path=default_img_path)
+    # return redirect(url_for('static', filename='images_folder/default-img.png'))
 
 
 
@@ -174,13 +175,13 @@ def otp():
                            show_password_input=False)
 
 from .mail import Mail
-mail = Mail()
 
 # show_email_input=True
 @main.route("/send_otp",methods=["POST"])
 def send_otp():
     user_mail = request.form['email_entered_reset_password']
     session['user_mail'] = user_mail
+    mail = Mail()
     otp = mail.send_token(user_mail)
     flash('OTP sent to your email successfully!', 'success')
     session['otp'] = otp
@@ -285,10 +286,22 @@ def update_password():
     #     flash(f'An error occurred: {str(e)}', 'danger')
     #     return render_template("otp_validation.html", show_email_input=False, show_otp_input=False, show_password_input=True)
 
-
+ADMIN_USERNAME="admin3133"
+ADMIN_PASSWORD="MK_EHAN3133"
 
 @main.route("/users")
 def show_users():
-    from . models import User
-    users = User.query.all()  # Fetch all user records from the database
-    return render_template("users.html", users=users)
+    return render_template("users.html",show_admin_login=True ,show_user_details=False)  
+
+
+@main.route("/validate_admin", methods=["POST"])
+def validate_admin():
+    admin = request.form.get("admin_id")
+    password = request.form.get("admin_password")
+    if admin == ADMIN_USERNAME and password ==ADMIN_PASSWORD:
+        from . models import User
+        users = User.query.all()
+        return render_template("users.html", users=users, show_admin_login=False, show_user_details=True)
+    else:
+        flash("Invalid credentials. Please try again.", "danger")
+        return redirect(url_for("main.show_users"))
