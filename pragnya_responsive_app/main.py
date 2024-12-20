@@ -175,13 +175,12 @@ def otp():
                            show_password_input=False)
 
 from .mail import Mail
-
+mail = Mail()
 # show_email_input=True
 @main.route("/send_otp",methods=["POST"])
 def send_otp():
     user_mail = request.form['email_entered_reset_password']
     session['user_mail'] = user_mail
-    mail = Mail()
     otp = mail.send_token(user_mail)
     flash('OTP sent to your email successfully!', 'success')
     session['otp'] = otp
@@ -305,3 +304,25 @@ def validate_admin():
     else:
         flash("Invalid credentials. Please try again.", "danger")
         return redirect(url_for("main.show_users"))
+    
+
+@main.route("/validate_signup_email")
+def validate_signup_email():
+    email = request.form["email"]
+    otp = mail.send_token(email)
+    flash("OTP sent to your email successfully!", "success")
+    session["otp"] = otp
+    entered_otp =int(request.form['otp'])
+    if 'otp' in session and session['otp'] == int (entered_otp):
+        flash('OTP validated successfully!', 'success')
+        session.pop('otp', None)
+        return render_template("validate_signin_email.html")
+    else:   
+        flash('Invalid OTP. Please try again.', 'danger')
+        return render_template("validate_signin_email.html")
+
+
+
+
+
+    return render_template("signup_email.html", show_email_input=True, show_otp_input=False, show_password_input=False)
