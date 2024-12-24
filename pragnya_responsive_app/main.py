@@ -15,12 +15,12 @@ main = Blueprint('main',__name__)
 @main.route('/')
 def index():
         show_auth_buttons = not current_user.is_authenticated
-        return render_template('index.html',show_auth_buttons=show_auth_buttons)
+        return render_template('index.html',show_auth_buttons=show_auth_buttons,show_admin_functions=False)
 
 @main.route('/home')
 def home():
         show_auth_buttons = not current_user.is_authenticated
-        return render_template('index.html',show_auth_buttons=show_auth_buttons)
+        return render_template('index.html',show_auth_buttons=show_auth_buttons,show_admin_functions=False)
 
 @main.route('/mainpage/<username>')
 @login_required
@@ -241,7 +241,7 @@ ADMIN_PASSWORD="MK_EHAN3133"
 
 @main.route("/users")
 def show_users():
-    return render_template("users.html",show_admin_login=True ,show_user_details=False)  
+    return render_template("users.html",show_admin_login=True ,show_user_details=False,show_auth_buttons=False,show_community_message=False,show_student_message=False)  
 
 
 @main.route("/validate_admin", methods=["POST"])
@@ -251,7 +251,7 @@ def validate_admin():
     if admin == ADMIN_USERNAME and password ==ADMIN_PASSWORD:
         from . models import User
         users = User.query.all()
-        return render_template("users.html", users=users, show_admin_login=False, show_user_details=True)
+        return render_template("users.html", users=users, show_admin_login=False, show_user_details=True,show_student_message=True,show_community_message=True,show_admin_auth=True)
     else:
         flash("Invalid credentials. Please try again.", "danger")
         return redirect(url_for("main.show_users"))
@@ -269,6 +269,31 @@ def delete_user(user_id):
         db.session.delete(user)
         db.session.commit()
         flash('User deleted successfully!', 'success')
+        return render_template("users.html",show_admin_login=False,show_user_details=True)  
+
     else:
         flash('User not found.', 'danger')
-    return redirect(url_for('main.show_users'))
+    return redirect(url_for('main.show_users',show_admin_login=True))
+
+
+
+@main.route('/send_message', methods=['POST'])
+def send_message():
+    student_id = request.form.get('student_id')
+    message = request.form.get('message')
+    from . models import User 
+    student = User.query.get(student_id)
+    if student:
+        # Logic to send message to the student (e.g., save to database, send email, etc.)
+        flash(f'Message sent to student ID {student_id} successfully!', 'success')
+    else:
+        flash(f'Student ID {student_id} not found.', 'danger')
+    
+    return redirect(url_for('main.show_users',show_admin_login=False,show_user_details=True,show_student_message=True,show_community_message=True))
+
+
+
+
+@main.route('/show_students')
+def show_students():
+    return render_template("users.html",show_user_details=True,show_admin_login=False ,show_student_message=False,show_auth_buttons=False,show_admin_functions=True,show_community_message=False)  

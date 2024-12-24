@@ -1,62 +1,140 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='users.css') }}">
     <title>Users</title>
+
 </head>
+
 <body>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-        <ul class="flashes">
-            {% for category, message in messages %}
-                <li class="{{ category }}" style="color: red;">{{ message }}</li>
-            {% endfor %}
-        </ul>
+    <ul class="flashes">
+        {% for category, message in messages %}
+        <li class="{{ category }}" style="color: red;">{{ message }}</li>
+        {% endfor %}
+    </ul>
     {% endif %}
     {% endwith %}
 
 
-    {% if show_admin_login %}
-    <h1>Admin/Faculty Login</h1>
-    <form action="{{ url_for('main.validate_admin') }}" method="post">
-        <label for="username">Admin ID:</label>
-        <input type="text" id="admin_id" name="admin_id" required><br>
-        <label for="password">Admin Password:</label>
-        <input type="password" id="admin_password" name="admin_password" required><br>
-        <button type="submit">Login</button>
-    </form>
-    {% endif %}
 
-    
-    {% if show_user_details %}
-    <h1>All Users</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Grade</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for user in users %}
-                <tr>
-                    <td>{{ user.id }}</td>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.student_grade }}</td>
-                    <td>
-                        <form action="{{ url_for('main.delete_user', user_id=user.id) }}" method="post" style="display:inline;">
-                            <button type="submit">Delete</button>
+    <div class="container">
+
+
+
+
+
+        <div class="show_admin_authentication">
+            {% if show_admin_login %}
+            <h1>Admin/Faculty Login</h1>
+            <form action="{{ url_for('main.validate_admin') }}" method="post">
+                <label for="username">Admin ID:</label>
+                <input type="text" id="admin_id" name="admin_id" required><br>
+                <label for="password">Admin Password:</label>
+                <input type="password" id="admin_password" name="admin_password" required><br>
+                <button type="submit">Login</button>
+            </form>
+            {% endif %}
+        </div>
+
+        
+        <div class="view_users">
+            {% if show_user_details %}
+            <h1>All Users</h1>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.student_grade }}</td>
+                        <td>
+                            <form action="{{ url_for('main.delete_user', user_id=user.id) }}" method="post"
+                            style="display:inline;">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+            
+                    <div class="message_students">
+                        {% if show_student_message %}
+                        <h2>Send Message to Student</h2>
+                        <form action="{{ url_for('main.send_message') }}" method="post">
+                            <label for="student_id">Student ID:</label>
+                            <input type="text" id="student_id" name="student_id" required><br>
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" required></textarea><br>
+                            <button type="submit">Send Message</button>
                         </form>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% endif %}
+                        {% endif %}
+                    </div>
+        </div>
+        {% if show_community_message %}
+        <div class="message_community">
+            <h2>Send Message to Comminity</h2>
+            {% endif %}
+        </div>
+    </div>
+
+
+
 </body>
-</html> 
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+
+
+{% endblock %}

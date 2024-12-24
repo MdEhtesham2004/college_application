@@ -1,0 +1,4 @@
+body{
+    font:oblique;
+    background-color:oklab(lightness a b);
+}

@@ -9,10 +9,10 @@ class User(db.Model, UserMixin):
     student_grade = db.Column(db.Float, nullable=True)  # Float for grades
 
     # Relationship to Image table (one-to-many relationship)
-    images = db.relationship('Image', backref='user', lazy=True)
+    images = db.relationship('Image', backref='user', lazy=True ,cascade="all, delete-orphan")
 
 class Image(db.Model):
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'),primary_key=True)  # Foreign key reference to the User table
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id',ondelete='CASCADE'),primary_key=True)  # Foreign key reference to the User table
     img = db.Column(db.LargeBinary, nullable=False)  # Storing image data as binary
     imgname = db.Column(db.String(200), nullable=True)  # Name of the image file
     mimetype = db.Column(db.String(100), nullable=True)  # Mime type of the image
