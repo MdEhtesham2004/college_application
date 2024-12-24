@@ -19,7 +19,7 @@
 
 
     {% if show_admin_login %}
-    <h1>Admin Login</h1>
+    <h1>Admin/Faculty Login</h1>
     <form action="{{ url_for('main.validate_admin') }}" method="post">
         <label for="username">Admin ID:</label>
         <input type="text" id="admin_id" name="admin_id" required><br>
@@ -48,6 +48,11 @@
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.student_grade }}</td>
+                    <td>
+                        <form action="{{ url_for('main.delete_user', user_id=user.id) }}" method="post" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

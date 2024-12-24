@@ -18,7 +18,7 @@
                 <div class="logo">
                     <img src="{{ url_for('static' ,filename='images_folder/pragnya.jpg') }}" alt="image of logo">
                 </div>
-                
+                {% if show_signup_fields %}
                 <form action="{{ url_for('auth.signup_post') }}" method="POST" class="form form_main" onsubmit="return validateForm()"  >
                     <p class="title">Signup</p>
                     <div class="flashes">
@@ -49,21 +49,8 @@
     
                     <label>
                         <input required="" placeholder="" type="email" class="input" name="email" id="email">
-                        <span>Email</span>
+                        <span>Email</span> 
                     </label>
-                    <label for="valid">
-                        <button> <a href="{{ url_for('main.validate_signup_email') }}"> validate email </a> </button>
-                    </label>
-                        <!-- {% if show_otp_input %}
-                        <h2>Enter the OTP sent to your email</h2>
-                        <form action="{{ url_for('main.validate_signup_email') }}" method="post">
-                            <label for="otp">OTP:</label>
-                            <input type="text" id="otp_signup" name="otp_signup" required>
-                            <button type="submit">Submit</button>
-                        </form>
-                        {% endif %} -->
-
-    
                     <label>
                         <input required="" placeholder="" type="password" class="input" name="password" id="password">
                         <span>Password</span>
@@ -74,7 +61,23 @@
                     </label>
                     <button class="submit"  type="submit"  >Submit</button>
                     <p class="signin">Already have an acount ? <a href="{{ url_for( 'auth.login' ) }}">Login</a> </p>
+                <!-- </form> -->
+                {% endif %}
+
+
+                {% if show_otp_input  %}
+                <!-- <form action="{{ url_for('auth.validate_otp_signup') }}" method="post"> -->
+                <form action="{{ url_for('auth.validate_otp_signup') }}" method="post">
+
+
+                    
+                    <h6>Enter the OTP sent to your email</h6>
+                    <input type="text" id="otp_signup" name="otp_signup" required>
+                    <button type="submit">  Validate OTP</button>
+                    
+                    
                 </form>
+                {% endif %}
 
             </div>
         </div>

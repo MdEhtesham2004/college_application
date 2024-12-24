@@ -23,8 +23,6 @@ class Mail:
             to_addrs=to_email_address,
             msg=f"Subject: Verification Token\n\n{message} "
             )
+        print("Mail sent successfully!")
         connection.close() 
         return token
-
-mail=Mail()
-mail.send_token("ehteshammd089@gmail.com")

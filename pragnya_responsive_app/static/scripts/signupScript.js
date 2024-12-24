@@ -34,9 +34,10 @@ function validateForm() {
     // }
   
     // If all validations pass
+    
+    validateOtp();
+
+
     return true;
   }
   
-
-
-

@@ -1,4 +1,4 @@
-from flask import Flask,Blueprint, render_template,request,current_app,send_from_directory,redirect,url_for,Response,send_file,session,flash
+from flask import Flask,Blueprint, render_template,request,current_app,send_from_directory,redirect,url_for,Response,send_file,session,flash,jsonify
 from flask_login import login_required,current_user
 import requests 
 import os 
@@ -70,22 +70,7 @@ def process_data():
     else:
         return "User not found."
     
-    # return f"Student Grade: {student_grade}"
-    # print("Student grade is : ", student_grade)
-
-# @main.route('/account')
-# @login_required
-# def account():
-#     user_details = {
-#         'id': current_user.id,
-#         'username': current_user.name,
-#         'email': current_user.email,
-#         'student_grade' : current_user.student_grade,
-#         'Profile_pic' : current_user.profile_pic,
-#         # Add other attributes as needed
-#     }
-#     weather_condition = weather.get_weather()
-#     return render_template('account.html', user=user_details, weather_condition=weather_condition)
+    
 
 @main.route("/account")
 @login_required
@@ -176,7 +161,6 @@ def otp():
 
 from .mail import Mail
 mail = Mail()
-# show_email_input=True
 @main.route("/send_otp",methods=["POST"])
 def send_otp():
     user_mail = request.form['email_entered_reset_password']
@@ -207,7 +191,6 @@ def validate_otp():
     else:
         flash('Invalid OTP. Please try again.', 'danger')
         print({f" failed otp {session.get('otp')}"})
-        # return redirect(url_for('otp'))
         return render_template(
                                 "otp_validation.html",
                                 show_email_input=False,
@@ -215,35 +198,6 @@ def validate_otp():
                                     show_password_input=False
                                 )
 
-# @main.route("/update_password", methods=["POST"])
-# def update_password():
-#     from . import db 
-#     from . models import User
-
-#     new_password = request.form['new_password']
-#     confirm_password = request.form['confirm_password']
-#     if new_password == confirm_password:
-#         hashed_password = generate_password_hash(password=new_password,method='pbkdf2:sha256')
-#         email = request.form['email']
-#         user = User.query.filter_by(email=email).first()
-#         if user:
-#             user.password = hashed_password
-#             db.session.commit()   
-#         flash('Password updated successfully!', 'success')
-#         # return render_template("otp_validation.html")
-#         # current_user.password = new_password
-#         return redirect(url_for('auth.login'))
-#         # return "Success!"
-#     else:
-#         flash('Passwords do not match. Please try again.', 'danger')
-#         # return redirect(url_for('otp'))
-#         return render_template(
-#                                 "otp_validation.html",
-#                                   show_email_input=False,
-#                                     show_otp_input=True,
-#                                       show_password_input=True
-#                                 )
-    
 
 
 @main.route("/update_password", methods=["POST"])
@@ -281,10 +235,7 @@ def update_password():
                                 show_email_input=False,
                                     show_otp_input=False,
                                     show_password_input=True)
-    # except Exception as e:
-    #     flash(f'An error occurred: {str(e)}', 'danger')
-    #     return render_template("otp_validation.html", show_email_input=False, show_otp_input=False, show_password_input=True)
-
+    
 ADMIN_USERNAME="admin3133"
 ADMIN_PASSWORD="MK_EHAN3133"
 
@@ -306,23 +257,18 @@ def validate_admin():
         return redirect(url_for("main.show_users"))
     
 
-@main.route("/validate_signup_email")
-def validate_signup_email():
-    email = request.form["email"]
-    otp = mail.send_token(email)
-    flash("OTP sent to your email successfully!", "success")
-    session["otp"] = otp
-    entered_otp =int(request.form['otp'])
-    if 'otp' in session and session['otp'] == int (entered_otp):
-        flash('OTP validated successfully!', 'success')
-        session.pop('otp', None)
-        return render_template("validate_signin_email.html")
-    else:   
-        flash('Invalid OTP. Please try again.', 'danger')
-        return render_template("validate_signin_email.html")
 
 
 
-
-
-    return render_template("signup_email.html", show_email_input=True, show_otp_input=False, show_password_input=False)
+@main.route("/delete_user/<int:user_id>", methods=["POST"])
+def delete_user(user_id):
+    from .models import  User 
+    from . import db 
+    user = User.query.get(user_id)
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+        flash('User deleted successfully!', 'success')
+    else:
+        flash('User not found.', 'danger')
+    return redirect(url_for('main.show_users'))
