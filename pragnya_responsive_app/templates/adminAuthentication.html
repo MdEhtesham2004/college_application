@@ -7,19 +7,31 @@
 
 
 
-<div class="show_admin_authentication">
-    {% if show_admin_login %}
-    <h1>Admin/Faculty Login</h1>
-    <form action="{{ url_for('main.validate_admin') }}" method="post">
-        <label for="username">Admin ID:</label>
-        <input type="text" id="admin_id" name="admin_id" required><br>
-        <label for="password">Admin Password:</label>
-        <input type="password" id="admin_password" name="admin_password" required><br>
-        <button type="submit">Login</button>
-    </form>
-    {% endif %}
-</div>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 
+    <div class="show_admin_authentication">
+        {% if show_admin_login %}
+        <h1>Admin/Faculty Login</h1>
+        <form action="{{ url_for('main.validate_admin') }}" method="post">
+            <label for="username">Admin ID:</label>
+            <input type="text" id="admin_id" name="admin_id" required><br>
+            <label for="password">Admin Password:</label>
+            <input type="password" id="admin_password" name="admin_password" required><br>
+            <button type="submit">Login</button>
+        </form>
+        {% endif %}
+    </div>
+    
+        
+</body>
+</html>
 
 {% endblock %}
