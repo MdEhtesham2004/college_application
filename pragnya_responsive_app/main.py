@@ -6,6 +6,8 @@ from werkzeug.utils import secure_filename
 import uuid
 import time 
 from werkzeug.security import generate_password_hash, check_password_hash
+from . file import dump_messages,load_messages
+from . job_search import get_jobs
 
 
 main = Blueprint('main',__name__)
@@ -75,7 +77,12 @@ def process_data():
 @main.route("/account")
 @login_required
 def account():
-     return render_template('account.html')
+     """  this function renders the user account page message from admin in messages and 
+           jobs is the dictionary of the jobs_posting       """
+     filepath='message.json'
+     messages=load_messages(current_user.id,filepath)
+     jobs = get_jobs()
+     return render_template('account.html',messages=messages,jobs=jobs)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'heic', 'heif'}
 
@@ -275,12 +282,15 @@ def delete_user(user_id):
         flash('User not found.', 'danger')
     return redirect(url_for('main.show_users',show_admin_login=True))
 
-
+import json 
 
 @main.route('/send_message', methods=['POST'])
 def send_message():
     student_id = request.form.get('student_id')
     message = request.form.get('message')
+    filepath = "message.json"
+    dump_messages(int(student_id),message,filepath)
+    
     from . models import User 
     student = User.query.get(student_id)
     if student:
@@ -297,3 +307,6 @@ def send_message():
 @main.route('/show_students')
 def show_students():
     return render_template("users.html",show_user_details=True,show_admin_login=False ,show_student_message=False,show_auth_buttons=False,show_admin_functions=True,show_community_message=False)  
+
+
+

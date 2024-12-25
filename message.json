@@ -1,0 +1,26 @@
+{
+    "users": [
+        {
+            "id": 2,
+            "name": "Jane Smith",
+            "email": "jane.smith@example.com"
+        },
+        {
+            "id": 4,
+            "name": "Jane Smith",
+            "email": "jane.smith@example.com"
+        },
+        {
+            "id": "3",
+            "message": "welcome  again by the admin "
+        },
+        {
+            "id": 3,
+            "message": "HELLO ONCE AGAIN DEAR "
+        },
+        {
+            "id": 3,
+            "message": "WELCOMRE FOR TEST "
+        }
+    ]
+}

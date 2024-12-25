@@ -138,7 +138,18 @@
             font-weight: bolder;
             font-style: oblique;
         }
-
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
 
 
 
@@ -264,12 +275,54 @@
                 </button>
             </div>
             <div class="card card-2">
+                {% if messages %}
+                <h1>Messages for student id:{{  current_user.id  }}</h1>
+            
+                {% for message in messages %}
+
+                
+                    
+                    <h2>{{ message }}</h2>
+                
+
+                {% endfor %}
+                {% endif %}
             </div>
             <div class="card card-3">
             </div>
         </div>
 
     </div>
+    <div class="show_jobs">
+        <details>
+            <summary>
+                <h1>Job Listings</h1>
+            </summary>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Date Posted</th>
+                        <th>Organization</th>
+                        <th>Source</th>
+                        <th>Valid Through</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for job in jobs %}
+                    <tr>
+                        <td>{{ job.title }}</td>
+                        <td>{{ job.date_posted }}</td>
+                        <td><a href="{{ job.organization_url }}" target="_blank">{{ job.organization }}</a></td>
+                        <td>{{ job.source }}</td>
+                        <td>{{ job.date_validthrough }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </details>
+    </div>
+    
     <div class="setting_box">
         <h2>Upload Your Profile Picture</h2>
 
