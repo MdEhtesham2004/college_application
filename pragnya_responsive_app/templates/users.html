@@ -14,36 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static',filename='users.css') }}">
     <title>Users</title>
-    <style>
-        
-        .container {
-            /* border: 2px solid red; */
-            width: 100vw;
-            height: 100vh;
-        }
 
-        .user_table {
-            /* border: 2px solid blue; */
-            text-align: center;
-            height: 50vh;
-        }
-
-        .user_table h1 {
-            /* border-bottom: 2px solid black; */
-            padding-bottom: 0.5em;
-        }
-
-        .table {
-            text-align: center;
-            margin: 2em;
-        }
-
-        .message_students {
-            /* border: 20px solid pink; */
-        }
-
-       
-    </style>
 </head>
 
 <body>
@@ -61,6 +32,7 @@
 
 
     <div class="container">
+
         <div class="view_users">
             <div class="user_table">
                 {% if show_user_details %}
