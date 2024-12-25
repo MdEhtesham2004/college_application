@@ -251,6 +251,11 @@ def show_users():
     return render_template("users.html",show_admin_login=True ,show_user_details=False,show_auth_buttons=False,show_community_message=False,show_student_message=False)  
 
 
+@main.route("/admin_authentication")
+def admin_authenticaton():
+    return render_template("adminAuthentication.html",show_admin_login=True)
+
+
 @main.route("/validate_admin", methods=["POST"])
 def validate_admin():
     admin = request.form.get("admin_id")
@@ -258,7 +263,7 @@ def validate_admin():
     if admin == ADMIN_USERNAME and password ==ADMIN_PASSWORD:
         from . models import User
         users = User.query.all()
-        return render_template("users.html", users=users, show_admin_login=False, show_user_details=True,show_student_message=True,show_community_message=True,show_admin_auth=True)
+        return render_template("users.html", users=users, show_user_details=True,show_student_message=True,show_community_message=True,show_admin_auth=True)
     else:
         flash("Invalid credentials. Please try again.", "danger")
         return redirect(url_for("main.show_users"))
