@@ -8,7 +8,7 @@ This is a Flask-based college application designed to simplify academic tasks fo
 
 ---
 
-## Features  
+## Features..  
 1. **User Authentication**:  
    - Secure login and signup system for students and faculty.  
 

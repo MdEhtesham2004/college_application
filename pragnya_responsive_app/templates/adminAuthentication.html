@@ -5,27 +5,151 @@
 
 {% block content %}
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+     .show_admin_authentication {
+            /* border: 2px solid brown; */
+            width: 100vw;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+        }
+
+        .adminForm {
+            border: 2px solid black;
+            border-radius: 2em;
+            text-align: center;
+            padding: 3em;
+            /* background-color: white; */
+            height: 35vh;
+        }
+
+        .show_admin_authentication input {
+            margin-bottom: 1em;
+
+        }
+
+        .show_admin_authentication label {
+            font-weight: bolder;
+            font-size: 19px;
+        }
+
+        .cssbuttonss-io {
+            position: relative;
+            font-family: inherit;
+            font-weight: 500;
+            font-size: 19px;
+            letter-spacing: 0.05em;
+            border-radius: 0.8em;
+            cursor: pointer;
+            border: none;
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+            color: ghostwhite;
+            overflow: hidden;
+            margin-top: 1.5em;
+        }
+
+        .cssbuttonss-io svg {
+            width: 1.2em;
+            height: 1.2em;
+            margin-right: 0.5em;
+        }
+
+        .cssbuttonss-io span {
+            position: relative;
+            z-index: 10;
+            transition: color 0.4s;
+            display: flex;
+            align-items: center;
+            padding: 0.8em 1.2em 0.8em 1.05em;
+        }
+
+        .cssbuttonss-io::before,
+        .cssbuttonss-io::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .cssbuttonss-io::before {
+            content: "";
+            background: #000;
+            /* background-color:  #495057; */
+            width: 120%;
+            left: -10%;
+            transform: skew(30deg);
+            transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+        }
+
+        .cssbuttonss-io:hover::before {
+            transform: translate3d(100%, 0, 0);
+        }
+
+        .cssbuttonss-io:active {
+            transform: scale(0.95);
+        }
+
+
+        .inputField {
+            width: 100%;
+            height: 30px;
+            /* background-color: transparent; */
+            /* border: none; */
+            border-bottom: 2px solid rgb(173, 173, 173);
+            margin: 10px 0;
+            color: black;
+            font-size: .8em;
+            font-weight: 500;
+            box-sizing: border-box;
+            padding-left: 30px;
+        }
+
+        .inputField:focus {
+            outline: none;
+            border-bottom: 2px solid rgb(199, 114, 255);
+        }
+
+        .inputField::placeholder {
+            color: rgb(80, 80, 80);
+            font-size: 1em;
+            font-weight: 500;
+            border-radius: 50%;
+        }
+
+    </style>
 </head>
 <body>
 
     <div class="show_admin_authentication">
         {% if show_admin_login %}
         <h1>Admin/Faculty Login</h1>
-        <form action="{{ url_for('main.validate_admin') }}" method="post">
-            <label for="username">Admin ID:</label>
-            <input type="text" id="admin_id" name="admin_id" required><br>
-            <label for="password">Admin Password:</label>
-            <input type="password" id="admin_password" name="admin_password" required><br>
-            <button type="submit">Login</button>
+        <form action="{{ url_for('main.validate_admin') }}" method="post" class="adminForm">
+            <label for="username">Admin ID:</label><br>
+            <input type="text" id="admin_id" name="admin_id"   class="inputField" required><br>
+            <label for="password">Admin Password:</label><br>
+            <input type="password" id="admin_password" name="admin_password"  class="inputField"   required><br>
+            <!-- <button type="submit">Login</button> -->
+             <button class="cssbuttonss-io" type="submit">
+                    <span>
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                        <path
+                            d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
+                            fill="currentColor"></path>
+                        </svg>
+                        <a href="#" class="links">Login</a>
+                    </span>
+                </button>
         </form>
         {% endif %}
     </div>
