@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 {% block head %}
-    {{ super() }}
+{{ super() }}
 {% endblock %}
 
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='signup_style.css') }}">
 <script src="{{ url_for('static', filename='scripts/signupScript.js') }}"></script>
+
 <body>
     <div class="supermain">
         <!-- header start  -->
-        
+
         <div class="main_sec">
             <div class="rhombus_parent">
                 <div class="rhombus"></div>
@@ -19,7 +20,8 @@
                     <img src="{{ url_for('static' ,filename='images_folder/pragnya.jpg') }}" alt="image of logo">
                 </div>
                 {% if show_signup_fields %}
-                <form action="{{ url_for('auth.signup_post') }}" method="POST" class="form form_main" onsubmit="return validateForm()"  >
+                <form action="{{ url_for('auth.signup_post') }}" method="POST" class="form form_main"
+                    onsubmit="return validateForm()">
                     <p class="title">Signup</p>
                     <div class="flashes">
                         {% with messages = get_flashed_messages() %}
@@ -32,7 +34,7 @@
                         {% endif %}
                         {% endwith %}
                     </div>
-            
+
                     <p id="flash"> </p>
                     <!-- <p class="message">Signup now and get full access to our PORTAL </p> -->
                     <div class="flex">
@@ -40,45 +42,56 @@
                             <input required="" placeholder="" type="text" class="input" name="firstName" id="firstName">
                             <span>Firstname</span>
                         </label>
-    
+
                         <label>
                             <input required="" placeholder="" type="text" class="input" name="lastName" id="lastName">
                             <span>Lastname</span>
                         </label>
                     </div>
-    
+
                     <label>
                         <input required="" placeholder="" type="email" class="input" name="email" id="email">
-                        <span>Email</span> 
+                        <span>Email</span>
                     </label>
                     <label>
                         <input required="" placeholder="" type="password" class="input" name="password" id="password">
                         <span>Password</span>
                     </label>
                     <label>
-                        <input required="" placeholder="" type="password" class="input" name="confirmPassword" id="confirmPassword">
+                        <input required="" placeholder="" type="password" class="input" name="confirmPassword"
+                            id="confirmPassword">
                         <span>Confirm password</span>
                     </label>
-                    <button class="submit"  type="submit"  >Submit</button>
+                    <button class="submit" type="submit">Submit</button>
                     <p class="signin">Already have an acount ? <a href="{{ url_for( 'auth.login' ) }}">Login</a> </p>
-                <!-- </form> -->
-                {% endif %}
+                    <!-- </form> -->
+                    {% endif %}
+
+                    <div class="OTP_validation">
+                        {% if show_otp_input %}
+                        <!-- <form action="{{ url_for('auth.validate_otp_signup') }}" method="post"> -->
+                        <form action="{{ url_for('auth.validate_otp_signup') }}" method="post">
 
 
-                {% if show_otp_input  %}
-                <!-- <form action="{{ url_for('auth.validate_otp_signup') }}" method="post"> -->
-                <form action="{{ url_for('auth.validate_otp_signup') }}" method="post">
+
+                            <h2 >Enter the OTP sent to your email</h2><br>
+                            <input type="text" id="otp_signup" name="otp_signup" required class="inputField" placeholder="Enter Your OTP Here"><br>
+                            <!-- <button type="submit"> Validate OTP</button> -->
+                            <button class="cssbuttonss-io" type="submit">
+                                <span>
+                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                    <path
+                                        d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
+                                        fill="currentColor"></path>
+                                    </svg>
+                                    <a href="#" class="links">Validate OTP</a>
+                                </span>
+                            </button>
 
 
-                    
-                    <h6>Enter the OTP sent to your email</h6>
-                    <input type="text" id="otp_signup" name="otp_signup" required>
-                    <button type="submit">  Validate OTP</button>
-                    
-                    
-                </form>
-                {% endif %}
-
+                        </form>
+                        {% endif %}
+                    </div>
             </div>
         </div>
     </div>

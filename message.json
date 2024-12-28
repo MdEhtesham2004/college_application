@@ -33,6 +33,12 @@
             "message": "hello from Kabir",
             "date": "26-12-2024",
             "time": "00:28:42"
+        },
+        {
+            "id": 6,
+            "message": "Tomorrow is a holiday on account of new Year \r\nCollege will resume on 2 Jan\r\n\r\n\r\nRegards\r\nPrincipal ",
+            "date": "26-12-2024",
+            "time": "16:32:12"
         }
     ]
 }

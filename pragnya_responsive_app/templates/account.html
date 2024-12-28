@@ -87,6 +87,11 @@
             height: 200px;
             width: 400px;
             margin-top: 1em;
+            text-align: center;
+        }
+
+        .card-2 span {
+            margin-top: 200em;
         }
 
         .card-3 {
@@ -138,15 +143,19 @@
             font-weight: bolder;
             font-style: oblique;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
+
         th {
             background-color: #f4f4f4;
         }
@@ -213,6 +222,7 @@
                 width: 320px;
             }
 
+
             /* .card {
                 width: 100vw;
             } */
@@ -276,14 +286,14 @@
             </div>
             <div class="card card-2">
                 {% if messages %}
-                <h1>Messages for student id:{{  current_user.id  }}</h1>
-            
+                <h1>Messages for student id:{{ current_user.id }}</h1>
+
                 {% for message in messages %}
 
-                
-                    
-                    <h2>{{ message }}</h2>
-                
+
+
+                <pre>{{ message }}</pre>
+
 
                 {% endfor %}
                 {% endif %}
@@ -293,6 +303,8 @@
         </div>
 
     </div>
+
+
     <div class="show_jobs">
         <details>
             <summary>
@@ -322,7 +334,7 @@
             </table>
         </details>
     </div>
-    
+
     <div class="setting_box">
         <h2>Upload Your Profile Picture</h2>
 
@@ -335,8 +347,8 @@
             <h2>Options:</h2>
             <select name="Options" id="options-dropdown" onchange="handleOptionChange()">
                 <option value="">Select an Option</option>
-                <option value="remove-dp"> <a href="{{ url_for('main.get_default_img') }}">  Remove Dp </a</option>
-                <!-- Add other options here if needed -->
+                <option value="remove-dp"> <a href="{{ url_for('main.get_default_img') }}"> Remove Dp </a> </option>
+                        <!-- Add other options here if needed -->
             </select>
         </div>
 
@@ -358,8 +370,8 @@
                 // Your logic to remove the profile picture
                 alert("Removing profile picture...");
                 alert("please reload to reflect the changes...");
-                
-                
+
+
             }
         }
     </script>

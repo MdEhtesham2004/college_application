@@ -13,15 +13,27 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+             /* display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh; */
         }
 
         .container {
             max-width: 500px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 100px;
             border: 1px solid #ccc;
             border-radius: 5px;
             box-shadow: 0px 0px 27px 0px rgba(0, 0, 0, .5);
+            /* display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; */
+            /* height: 100vh;
+            width: 100vw; */
         }
 
         .form-group {
@@ -41,7 +53,7 @@
             border: 1px solid #ccc;
         }
 
-        button {
+        .btn {
             padding: 10px 20px;
             background-color: #007bff;
             color: #fff;
@@ -50,8 +62,12 @@
             cursor: pointer;
         }
         
-        button:hover {
+        .btn:hover {
             background-color: #0056b3;
+        }
+        h2{
+            margin-bottom: 1.5em;
+            font-size: 2em;
         }
     </style>
 <!-- <script src="{{ url_for('static', filename='\scripts\calculator.js') }}"></script> -->
@@ -76,7 +92,7 @@
             <label for="labGrades">Grades of Labs (comma-separated, uppercase):</label>
             <input type="text" id="labGrades">
         </div>
-        <button onclick="calculateCGPA()">Calculate CGPA</button>
+        <button onclick="calculateCGPA()" class="btn">Calculate CGPA</button>
         <div id="result"></div>
     </div>
     <div>
@@ -127,6 +143,8 @@ function printCombinedMarks(marks, isSubjectArray) {
                 break;
             case 'D':
                 total += isSubjectArray ? 24 : 12;
+            case 'E':
+                total += isSubjectArray ? 20 : 10;
                 break;
             default:
                 console.log("Invalid grade encountered for element " + i + ": " + marks[i]);
