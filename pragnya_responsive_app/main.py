@@ -8,6 +8,7 @@ import time
 from werkzeug.security import generate_password_hash, check_password_hash
 from . file import dump_messages,load_messages
 from . job_search import get_jobs
+import json 
 
 
 main = Blueprint('main',__name__)
@@ -287,7 +288,6 @@ def delete_user(user_id):
         flash('User not found.', 'danger')
     return redirect(url_for('main.show_users',show_admin_login=True))
 
-import json 
 
 @main.route('/send_message', methods=['POST'])
 def send_message():
