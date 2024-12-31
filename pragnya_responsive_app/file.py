@@ -25,7 +25,6 @@ def dump_messages(student_id,student_message,file_name,):
         json.dump(data, json_file, indent=4)
 
 
-student_id = 3 
 
 file_path='messages.json'
 
