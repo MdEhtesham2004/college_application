@@ -39,6 +39,12 @@
             "message": "Tomorrow is a holiday on account of new Year \r\nCollege will resume on 2 Jan\r\n\r\n\r\nRegards\r\nPrincipal ",
             "date": "26-12-2024",
             "time": "16:32:12"
+        },
+        {
+            "id": 6,
+            "message": "HII ID NO 6",
+            "date": "31-12-2024",
+            "time": "21:10:04"
         }
     ]
 }

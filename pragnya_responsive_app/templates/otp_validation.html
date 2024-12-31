@@ -1,53 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTP Verification</title>
+    <style>
+        * {
+            /* border: 2px solid red; */
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+
+        }
+
+        .form-container {
+            margin-top: 2em;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 32px 24px;
+            font-size: 14px;
+            font-family: inherit;
+            color: #212121;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+
+        }
+
+        .form-container button:active {
+            scale: 0.95;
+        }
+
+        .form-container .logo-container {
+            text-align: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .form-container .form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .form-container .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-container .form-group input {
+            width: 80%;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-family: inherit;
+            border: 1px solid #ccc;
+            font-weight: bolder;
+        }
+
+        .form-container .form-group input::placeholder {
+            opacity: 0.5;
+        }
+
+        .form-container .form-group input:focus {
+            outline: none;
+            border-color: #1778f2;
+        }
+
+        .form-container .form-submit-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: inherit;
+            color: #fff;
+            background-color: #212121;
+            border: none;
+            width: 50%;
+            padding: 12px 16px;
+            font-size: inherit;
+            gap: 8px;
+            margin: 12px 0;
+            cursor: pointer;
+            border-radius: 6px;
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+        }
+
+        .form-container .form-submit-btn:hover {
+            background-color: #4d4c4c;
+        }
+
+        .form-container .link {
+            color: #1778f2;
+            text-decoration: none;
+        }
+
+        .form-container .signup-link {
+            align-self: center;
+            font-weight: 500;
+        }
+
+        .form-container .signup-link .link {
+            font-weight: 400;
+        }
+
+        .form-container .link:hover {
+            text-decoration: underline;
+        }
+
+        .cssbuttons-io {
+            position: relative;
+            font-family: inherit;
+            font-weight: 500;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            border-radius: 0.8em;
+            cursor: pointer;
+            border: none;
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+            color: ghostwhite;
+            overflow: hidden;
+            margin: 1em 6em;
+        }
+
+        .cssbuttons-io a {
+            text-decoration: none;
+            color: ghostwhite;
+        }
+
+        .cssbuttons-io svg {
+            width: 1.2em;
+            height: 1.2em;
+            margin-right: 0.5em;
+        }
+
+        .cssbuttons-io span {
+            position: relative;
+            z-index: 10;
+            transition: color 0.4s;
+            display: flex;
+            align-items: center;
+            padding: 0.8em 1.2em 0.8em 1.05em;
+        }
+
+        .cssbuttons-io::before,
+        .cssbuttons-io::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .cssbuttons-io::before {
+            content: "";
+            background: #000;
+            /* background-color:  #495057; */
+            width: 120%;
+            left: -10%;
+            transform: skew(30deg);
+            transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+        }
+
+        .cssbuttons-io:hover::before {
+            transform: translate3d(100%, 0, 0);
+        }
+
+        .cssbuttons-io:active {
+            transform: scale(0.95);
+        }
+
+
+        .inputField {
+            width: 80%;
+            height: 30px;
+            /* background-color: transparent; */
+            /* border: none; */
+            border-bottom: 2px solid rgb(173, 173, 173);
+            margin: 10px 0;
+            color: black;
+            font-size: .8em;
+            font-weight: bolder;
+            box-sizing: border-box;
+            padding-left: 30px;
+        }
+
+        .inputField:focus {
+            outline: none;
+            border: 2px solid blue;
+        }
+
+        .inputField::placeholder {
+            color: rgb(80, 80, 80);
+            font-size: 1em;
+            font-weight: 500;
+            border-radius: 50%;
+        }
+
+        .otpLabel {
+            font-weight: bolder;
+        }
+
+        .bg_img {
+            width: 55%;
+            position: absolute;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        @media only screen and (max-width:768px){
+            .bg_img {
+                width: 160%;
+            }
+        } 
+    </style>
 </head>
+
 <body>
+    <img src="../static/images_folder/logo.jpg" alt="logo" class="bg_img">
     <!-- Flash messages section -->
     {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <ul class="flashes">
-                {% for category, message in messages %}
-                    <li class="{{ category }}" style="color: red;">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for category, message in messages %}
+        <li class="{{ category }}" style="color: red; margin-bottom: 2em;">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     {% endwith %}
 
     {% if show_email_input %}
     <h2>Enter your email to receive the OTP</h2>
-    <form action="{{ url_for('main.send_otp') }}" method="post">
+    <!-- <form action="{{ url_for('main.send_otp') }}" method="post">
         <label for="email">Email:</label>
         <input type="email" id="email_entered_reset_password" name="email_entered_reset_password" required>
         <button type="submit">Submit</button>
     </form>
-    
+     -->
+
+    <div class="form-container">
+        <div class="logo-container">
+            Forgot Password ?
+        </div>
+
+        <form class="form" action="{{url_for('main.send_otp')}}" method="post">
+            <div class="form-group">
+                <label for="email">Email :-</label>
+                <input type="text" id="email_entered_reset_password" name="email_entered_reset_password"
+                    placeholder="Enter your email" required>
+            </div>
+
+            <button class="form-submit-btn" type="submit">Send Email</button>
+        </form>
+
+        <p class="signup-link">
+            Don't have an account?
+            <a href="{{ url_for('auth.signup') }}" class="signup-link link"> Sign up now</a>
+        </p>
+    </div>
+
+
 
     {% elif show_otp_input %}
+
     <h2>Enter the OTP sent to your email</h2>
-    <form action="{{ url_for('main.validate_otp') }}" method="post">
-        <label for="otp">OTP:</label>
-        <input type="text" id="otp" name="otp" required>
-        <button type="submit">Submit</button>
-    </form>
-    
+    <div class="form-container">
+        <form action="{{ url_for('main.validate_otp') }}" method="post">
+            <label for="otp" class="otpLabel">OTP:</label>
+            <input type="text" id="otp" name="otp" required class="inputField"><br>
+            <!-- <button type="submit" class="cssbuttons-io">Submit</button> -->
+            <button class="cssbuttons-io" type="submit">
+                <span>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                        d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
+                        fill="currentColor"></path>
+                    </svg>
+                    <a class="links">Submit</a>
+                </span>
+            </button>
+        </form>
+    </div>
+
 
 
     {% elif show_password_input %}
     <h2>Update your password</h2>
-    <form action="{{ url_for('main.update_password') }}" method="post">
-        <label for="new_password">New Password:</label>
-        <input type="password" id="new_password" name="new_password" required><br>
-        <label for="confirm_password">Confirm Password:</label>
-        <input type="password" id="new_confirm_password" name="confirm_password" required><br>
-        <button type="submit">Update Password</button>
-    </form>
+    <div class="form-container">
+        <form action="{{ url_for('main.update_password') }}" method="post">
+            <label for="new_password">New Password:</label><br>
+            <input type="password" id="new_password" name="new_password" class="inputField" required><br>
+            <label for="confirm_password">Confirm Password:</label><br>
+            <input type="password" id="new_confirm_password" name="confirm_password" class="inputField" required><br>
+            <!-- <button type="submit">Update Password</button> -->
+            <button class="cssbuttons-io" type="submit">
+                <span>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                        d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
+                        fill="currentColor"></path>
+                    </svg>
+                    <a class="links">Update Password</a>
+                </span>
+            </button>
+        </form>
+    </div>
     {% endif %}
 
 
-    
+
 </body>
+
 </html>

@@ -5,6 +5,8 @@
 
 {% block content %}
 
+<!-- transform: scale(1.05); -->
+
 <body>
     <link rel="stylesheet" href="{{ url_for('static',filename='cards.css') }}">
 <div>
@@ -27,11 +29,11 @@
 
 
         <div class="cookieCard">
-            <p class="cookieHeading">ATTENDENCE</p>
-            <p class="cookieDescription">Check your attendence by clicking below
+            <p class="cookieHeading">COURSES</p>
+            <p class="cookieDescription">Take the Most popular courses by clicking below
                 <br>
                 <br>
-                Note :- If your attendence is less than 50% then u have to pay attendence fees to the university
+                Note :- Tha all courses are free and available on Youtube U did not have to pay anything for any course
             </p> <a href="{{ url_for('main.courses') }}">
                 <button class="acceptButton">Checkout the Courses</button>
             </a>
