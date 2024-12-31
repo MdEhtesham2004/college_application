@@ -5,12 +5,6 @@
             "message": "TESTING MESSAGES",
             "date": "31-12-2024",
             "time": "14:49:55"
-        },
-        {
-            "id": 3,
-            "message": "HELLO TEST USER ",
-            "date": "31-12-2024",
-            "time": "21:57:19"
         }
     ]
 }
