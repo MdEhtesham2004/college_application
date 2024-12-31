@@ -35,10 +35,17 @@
             "time": "00:28:42"
         },
         {
+<<<<<<< HEAD
             "id": 3,
             "message": "HELLO FROM ADNAN",
             "date": "28-12-2024",
             "time": "22:10:24"
+=======
+            "id": 6,
+            "message": "Tomorrow is a holiday on account of new Year \r\nCollege will resume on 2 Jan\r\n\r\n\r\nRegards\r\nPrincipal ",
+            "date": "26-12-2024",
+            "time": "16:32:12"
+>>>>>>> 4b0eda9f8b8f238c02cf2ccc20aba3a8ab0fbf7c
         }
     ]
 }
