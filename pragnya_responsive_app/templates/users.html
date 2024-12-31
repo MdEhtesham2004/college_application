@@ -275,10 +275,10 @@
         </div>
 
         <div class="msg_std">
-
+            <h2></h2>
             <div class="message_students">
-                {% if show_student_message %}
                 <h2>Send Message to Student</h2>
+                {% if show_student_message %}
                 <form action="{{ url_for('main.send_message') }}" method="post">
                     <label for="student_id">Student ID:</label><br>
                     <input type="text" id="student_id" name="student_id" required class="inputField"
@@ -304,7 +304,7 @@
 
             {% if show_community_message %}
             <div class="message_community">
-                <h2>Send Message to Community</h2>
+                <h2> Message to Community</h2>
                 <form>
                     <label for="message">Message:</label><br>
                     <textarea id="message" name="message" required class="inputField"

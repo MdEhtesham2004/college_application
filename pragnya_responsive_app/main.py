@@ -8,7 +8,6 @@ import time
 from werkzeug.security import generate_password_hash, check_password_hash
 from . file import dump_messages,load_messages
 from . job_search import get_jobs
-import json 
 
 
 main = Blueprint('main',__name__)
@@ -80,7 +79,7 @@ def process_data():
 def account():
      """  this function renders the user account page message from admin in messages and 
            jobs is the dictionary of the jobs_posting       """
-     filepath='message.json'
+     filepath="message.json "
      messages=load_messages(current_user.id,filepath)
      jobs = get_jobs()
      return render_template('account.html',messages=messages,jobs=jobs)
@@ -288,6 +287,7 @@ def delete_user(user_id):
         flash('User not found.', 'danger')
     return redirect(url_for('main.show_users',show_admin_login=True))
 
+import json 
 
 @main.route('/send_message', methods=['POST'])
 def send_message():
@@ -314,4 +314,26 @@ def show_students():
     return render_template("users.html",show_user_details=True,show_admin_login=False ,show_student_message=False,show_auth_buttons=False,show_admin_functions=True,show_community_message=False)  
 
 
+@main.route('/remove_dp')
+def remove_dp():
+    from . import db 
+    from .models import Image
+    id = current_user.id
+    try:
+        # Step 1: Query the row to delete
+        user_to_delete = Image.query.filter_by(user_id=id).first()
+        
+        # Step 2: Delete the row if it exists
+        if user_to_delete:
+            db.session.delete(user_to_delete)
+            db.session.commit()
+            print(f"User with id={user_to_delete.user_id} deleted successfully!")
+            return redirect(url_for('main.account'))
+        else:
+            print(f"No image found for user with id={id}")
 
+        # Redirect to the default image route
+        # return redirect(url_for('main.get_default_img'))
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        return "An error occurred while removing the display picture.", 500
