@@ -79,7 +79,7 @@ def process_data():
 def account():
      """  this function renders the user account page message from admin in messages and 
            jobs is the dictionary of the jobs_posting       """
-     filepath="message.json "
+     filepath="message.json"
      messages=load_messages(current_user.id,filepath)
      jobs = get_jobs()
      return render_template('account.html',messages=messages,jobs=jobs)
