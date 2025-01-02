@@ -33,8 +33,6 @@
             /* border: 2px solid red; */
             /* flex-wrap: wrap; */
             /* background-image: url('/pragnya_responsive_app/account_photos/images.jpeg'); */
-            background-repeat: no-repeat;
-            background-size: cover;
 
         }
 
@@ -49,17 +47,14 @@
 
         }
 
-        /* .one {
-            width: 100vw;
-        } */
 
         .two {
-            /* display: flex; */
             height: 95%;
+            text-align: right;
+            /* display: flex; */
             /* align-items: center;
             justify-content: space-around; */
             /* flex-direction: column; */
-            text-align: right;
             /* border: 2px solid #000; */
             /* flex-wrap: wrap; */
 
@@ -76,29 +71,34 @@
         }
 
         .card-1 {
-            height: 550px;
+            height: 85vh;
             /* margin-left: 1em; */
-            width: 400px;
+            width: 30vw;
             /* background-color: transparent; */
 
         }
 
         .card-2 {
-            height: 200px;
-            width: 400px;
-            margin-top: 1em;
+            height: 35vh;
+            width: 30vw;
+            /* margin-top: 1em; */
             text-align: center;
         }
 
-        .card-2 span {
-            margin-top: 200em;
+        .card-2 h1 {
+            margin-bottom: 1em;
+            /* border: 2px solid red; */
         }
+
 
         .card-3 {
             margin-top: 5em;
-            height: 200px;
-            width: 400px;
+            height: 35vh;
+            width: 30vw;
             /* background-color: transparent; */
+        }
+        .card-3 h1{
+            margin-bottom: 1em;
         }
 
         .photo {
@@ -125,6 +125,7 @@
             border: 1px solid wheat;
             background-color: rgba(245, 245, 245, 0.416);
             /* background-color: red; */
+            border: 2px solid red;
             box-shadow: 0px 0px 27px 0px rgba(0, 0, 0, .5);
             position: absolute;
             top: 21%;
@@ -165,8 +166,9 @@
 
         @media only screen and (max-width:768px) {
 
-            /* .position {
-                } */
+            *{
+                border: 2px solid red;
+            }
             .setting_box {
                 width: 70%;
                 height: 98%;
@@ -188,32 +190,30 @@
                 /* border: 2px solid red; */
                 width: 100vw;
                 position: relative;
+                margin-left: 2em;
                 /* border: 2px solid red; */
 
             }
 
             .two {
-                display: flex;
-                align-items: flex-start;
+                /* display: flex; */
+                /* align-items: flex-start;
                 justify-content: center;
                 flex-direction: column;
                 height: 100%;
                 width: 100vw;
+                margin-left: 1.3em; */
                 /* text-align: left; */
                 /* border: 2px solid red; */
-                margin-left: 1.3em;
+                /* display: none; */
 
-            }
-
-            body {
-                background-size: 500rem;
             }
 
 
 
             .card-1 {
-                margin-top: 3em;
-                width: 350px;
+                margin-top: 2em;
+                width: 300px;
                 height: 600px;
             }
 
@@ -230,7 +230,7 @@
             .setting {
                 width: 70%;
                 position: absolute;
-                top: 9px;
+                top: 50px;
                 right: 3px;
                 /* display: none; */
             }
@@ -290,9 +290,7 @@
 
                 {% for message in messages %}
 
-
-
-                <pre>{{ message }}</pre>
+                    <span>{{ message }}</span>
 
 
                 {% endfor %}
@@ -349,7 +347,7 @@
             <select name="Options" id="options-dropdown" onchange="handleOptionChange()">
                 <option value="">Select an Option</option>
                 <option value="remove-dp"> <a href="{{ url_for('main.remove_dp') }}"> Remove Dp </a> </option>
-                        <!-- Add other options here if needed -->
+                <!-- Add other options here if needed -->
             </select>
         </div>
 
