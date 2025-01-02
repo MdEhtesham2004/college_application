@@ -11,6 +11,18 @@
             "message": "HELLO TEST USER ",
             "date": "31-12-2024",
             "time": "21:57:19"
+        },
+        {
+            "id": 6,
+            "message": "Hii This Is Kabir Here",
+            "date": "01-01-2025",
+            "time": "02:35:13"
+        },
+        {
+            "id": 6,
+            "message": "Dear Students Tomorrow (1st January) declared a Holiday on account of New Year \r\nWish you Happy and Prosperous new year",
+            "date": "01-01-2025",
+            "time": "02:35:13"
         }
     ]
 }
