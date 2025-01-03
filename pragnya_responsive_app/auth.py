@@ -124,7 +124,7 @@ def validate_otp_signup():
         flash('Invalid OTP. Please try again.', 'danger')
         print({f" failed otp {session.get('otp')}"})
         otp_validation = False
-        return redirect(url_for(auth.signup))
+        return redirect(url_for("auth.signup"))
 
 @auth.route('/logout')
 @login_required
