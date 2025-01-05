@@ -432,6 +432,15 @@
             </div>
             <div class="card card-3">
                 <h1> Message For Community </h1>
+                {% if community_messages %}
+
+                {% for message in community_messages %}
+
+                <span>{{ message }}</span><br>
+
+
+                {% endfor %}
+                {% endif %}
             </div>
         </div>
 
