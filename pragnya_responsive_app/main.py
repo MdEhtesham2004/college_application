@@ -347,7 +347,6 @@ def about():
     return render_template("about.html")
 
 
-
 """ adding send community functionality   """
 
 @main.route('/send_community_message',methods=['POST'])
