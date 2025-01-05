@@ -42,6 +42,10 @@ def modelpaper():
 def profile():
     return render_template('cards.html', username=current_user.name)
 
+@main.route('/about')
+def about():
+    return render_template("about.html")
+
 
 @main.route('/submit_grade', methods=['POST'])
 def process_data():
@@ -342,9 +346,6 @@ def remove_dp():
     
 
 
-@main.route('/about')
-def about():
-    return render_template("about.html")
 
 
 """ adding send community functionality   """
