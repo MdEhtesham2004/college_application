@@ -334,6 +334,7 @@ def remove_dp():
             db.session.delete(user_to_delete)
             db.session.commit()
             print(f"User with id={user_to_delete.user_id} deleted successfully!")
+            flash("Profile Pic has Successfully Removed!")
             return redirect(url_for('main.account'))
         else:
             print(f"No image found for user with id={id}")

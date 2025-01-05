@@ -496,16 +496,24 @@
         </form>
 
         <div class="setting_options">
+             
             <h2>Options:</h2>
             <select name="Options" id="options-dropdown" onchange="handleOptionChange()">
                 <option value="">Select an Option</option>
-                <option value="remove-dp"> <a href="{{ url_for('main.remove_dp') }}"> Remove Dp </a> </option>
+                <option value="remove-dp">remove dp 
+                 </option>
                 <!-- Add other options here if needed -->
             </select>
         </div>
+        <div class="remove_dp">
+            <button>
+            <form action="{{ url_for('main.remove_dp') }}">
+                <a href="{{ url_for('main.remove_dp') }}"> Remove Dp </a>
+            </form>
+        </button>
+        </div>
 
     </div>
-
 
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script>
