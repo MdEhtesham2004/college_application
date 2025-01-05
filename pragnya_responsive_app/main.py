@@ -342,5 +342,12 @@ def remove_dp():
 
 @main.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template("about.html")
 
+
+
+""" adding send community functionality   """
+
+@main.route('/send_community_message')
+def send_community_message():
+    pass
