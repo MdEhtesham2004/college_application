@@ -44,7 +44,7 @@ def profile():
 
 @main.route('/about')
 def about():
-    return render_template("about.html")
+    return render_template("About.html")
 
 
 @main.route('/submit_grade', methods=['POST'])
