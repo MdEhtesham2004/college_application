@@ -337,3 +337,10 @@ def remove_dp():
     except Exception as e:
         print(f"Error occurred: {e}")
         return "An error occurred while removing the display picture.", 500
+    
+
+
+@main.route('/about')
+def about():
+    return render_template('about.html')
+
