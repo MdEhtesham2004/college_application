@@ -148,6 +148,11 @@ def signup():
 def Account():
     return render_template('cards.html',show_auth_buttons=True)
 
+@auth.route('/About')
+@login_required
+def About():
+    return render_template('about.html',show_auth_buttons=True)
+
 
 
 

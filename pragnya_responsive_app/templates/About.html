@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <title>About Us - BCS Student Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* background-color: #f9f9f9; */
+            color: #333;
+        }
+
+        .main_heading {
+            text-align: center;
+            padding: 20px 10px;
+            text-align: center;
+        }
+
+        /* header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+        }  */
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            /* background-color: white; */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1,
+        h2 {
+            color: black;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .features,
+        .team {
+            margin: 20px 0;
+        }
+
+        .team-member {
+            margin: 10px 0;
+        }
+
+        /* footer {
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+        } */
+
+        .img-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .container section:not(:first-of-type) {
+            margin-top: 3em;
+        }
+
+        .gallery {
+            margin: 2em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 class="main_heading">About Us</h1>
+        <p class="main_heading">Welcome to the BCA Student Portal!</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Welcome to BCA Student Portal</h2>
+            <br>
+            <li>Your one-stop solution for managing academic and college-related activities!</li>
+        </section>
+
+        <section class="features">
+            <h2>Features of the Portal :-</h2>
+            <br>
+            <ul>
+                <li>Easy navigation for announcements, schedules, and updates</li>
+                <li>Dedicated sections for academic resources</li>
+                <li>User-friendly and built with students in mind</li>
+            </ul>
+        </section>
+
+        <section class="team">
+            <h2>Meet the Team :-</h2>
+            <br>
+            <div class="team-member">
+                <h3>Mohd Ehtesham :- Backend Developer</h3>
+                <br>
+                <li>A tech enthusiast with a knack for solving problems through code. Always eager to learn and
+                    implement
+                    new technologies.</li>
+            </div>
+            <br>
+            <div class="team-member">
+                <h3>Mohd Kabir :- Frontend Developer</h3>
+                <br>
+                <li>Passionate about designing intuitive user experiences and ensuring the portal runs smoothly for all
+                    users.</li>
+            </div>
+        </section>
+
+        <section>
+            <h2>Why We Built This :-</h2>
+            <br>
+            <li>We realized the need for a centralized platform where students could seamlessly access important
+                information. Instead of waiting for someone else to take the initiative, we decided to bring our vision
+                to life.</li>
+        </section>
+
+        <section>
+            <h2>Our Goal :-</h2>
+            <br>
+            <li>Our goal is to make this portal a cornerstone of the student community in our college. We hope it
+                enhances communication, fosters collaboration, and saves everyone time and effort.</li>
+        </section>
+
+        <div class="img-container">
+            <h2 class="gallery">Gallery :-</h2>
+            <img src="{{url_for('static',filename = 'images_folder/Home_page_screenshot.png')}}"
+                alt="Screenshot of the portal homepage">
+            <h3><i>Screenshot of the portal Homepage</i></h3>
+            <!-- Add more images as needed -->
+        </div>
+
+        <div class="tail_gallery">
+           
+        </div>
+    </div>
+
+</body>
+
+{% endblock %}
