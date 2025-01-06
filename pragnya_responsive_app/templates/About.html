@@ -101,6 +101,28 @@
         .gallery {
             margin: 2em;
         }
+
+        .ehan_img {
+            max-width: 20%;
+            border-radius: 50%;
+            margin-bottom: 1em;
+            /* border: 2px solid red; */
+        }
+
+        .tail_gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+            /* Adjust the gap between grid items as needed */
+        }
+
+        .tail_gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            /* Optional: Add border radius to images */
+        }
     </style>
 </head>
 
@@ -132,7 +154,8 @@
             <h2>Meet the Team :-</h2>
             <br>
             <div class="team-member">
-                <h3>Mohd Ehtesham :- Backend Developer</h3>
+                <img src="../static/images_folder/ehtesham_main_pic.jpg" class="ehan_img" alt="">
+                <h3>Mohammed Ehtesham :- Backend Developer</h3>
                 <br>
                 <li>A tech enthusiast with a knack for solving problems through code. Always eager to learn and
                     implement
@@ -140,6 +163,7 @@
             </div>
             <br>
             <div class="team-member">
+                <img src="../static/images_folder/Kabir_main_img.jpg" class="ehan_img" alt="">
                 <h3>Mohd Kabir :- Frontend Developer</h3>
                 <br>
                 <li>Passionate about designing intuitive user experiences and ensuring the portal runs smoothly for all
@@ -171,9 +195,14 @@
         </div>
 
         <div class="tail_gallery">
-           
+            <img src="../static/images_folder/ethesham_internship_pic.jpg" alt="ethesham_internship_pic">
+            <img src="../static/images_folder/IMG-20250105-WA0037.jpg" alt="principal_image">
+            <img src="../static/images_folder/IMG-20250106-WA0008.jpg" alt="">
+            <img src="../static/images_folder/IMG-20250106-WA0004.jpg" alt="">
+            <img src="../static/images_folder/IMG-20250105-WA0039.jpg" alt="">
+            
+
         </div>
-    </div>
 
 </body>
 
