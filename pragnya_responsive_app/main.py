@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 import uuid
 import time 
 from werkzeug.security import generate_password_hash, check_password_hash
-from . file import dump_messages,load_messages
+from . file import dump_messages,load_messages,load_community_messages,dump_community_message
 from . job_search import get_jobs
 
 
@@ -41,6 +41,10 @@ def modelpaper():
 @login_required
 def profile():
     return render_template('cards.html', username=current_user.name)
+
+@main.route('/about')
+def about():
+    return render_template("About.html")
 
 
 @main.route('/submit_grade', methods=['POST'])
@@ -80,9 +84,11 @@ def account():
      """  this function renders the user account page message from admin in messages and 
            jobs is the dictionary of the jobs_posting       """
      filepath="message.json"
+     filepath_community="community_message.json"
      messages=load_messages(current_user.id,filepath)
+     community_messages = load_community_messages(filepath_community)
      jobs = get_jobs()
-     return render_template('account.html',messages=messages,jobs=jobs)
+     return render_template('account.html',messages=messages,jobs=jobs,community_messages=community_messages)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'heic', 'heif'}
 
@@ -328,6 +334,7 @@ def remove_dp():
             db.session.delete(user_to_delete)
             db.session.commit()
             print(f"User with id={user_to_delete.user_id} deleted successfully!")
+            flash("Profile Pic has Successfully Removed!")
             return redirect(url_for('main.account'))
         else:
             print(f"No image found for user with id={id}")
@@ -337,3 +344,20 @@ def remove_dp():
     except Exception as e:
         print(f"Error occurred: {e}")
         return "An error occurred while removing the display picture.", 500
+    
+
+
+
+
+""" adding send community functionality   """
+
+@main.route('/send_community_message',methods=['POST'])
+def send_community_message():
+    community_message = request.form.get('community_message')
+    filepath = "community_message.json"
+    dump_community_message(community_message,filepath)
+    flash(f'Message sent to community successfully!', 'success')
+    return redirect(url_for('main.show_users',show_admin_login=False,show_user_details=True,show_student_message=True,show_community_message=True))
+
+
+

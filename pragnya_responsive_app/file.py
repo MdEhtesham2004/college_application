@@ -113,10 +113,63 @@ def delete_message(filepath):
 
 
 
+def dump_community_message(message,file_name):
+    message = message 
+    new_message = {"message":message, "date":now.strftime("%d-%m-%Y"),"time":now.strftime("%H:%M:%S")}
+
+    # Path to the JSON file
+    file_path = file_name
+
+    # Read existing data
+    try:
+        with open(file_path, "r") as json_file:
+            data = json.load(json_file)
+    except FileNotFoundError:
+        data = {"messages": []}  # Initialize if file doesn't exist
+
+    # Add new data
+    data["messages"].append(new_message)
+
+    # Write updated data back to the file
+    with open(file_path, "w") as json_file:
+        json.dump(data, json_file, indent=4)
 
 
 
+# dump_community_message("hello from community","community_message.json")
 
 
+def load_community_messages(file_path):
+      delete_community_messages(file_path)
+      with open(file_path, "r") as json_file:
+        data = json.load(json_file)
+        list_messages = data['messages']
 
+        # Collect all messages for the given student_id
+        found_messages = [messages['message'] for messages in list_messages ]
 
+        # Print all messages or a message if no messages were found
+        if found_messages:
+            # print(f"Messages from student {student_id}:")
+            # for message in found_messages:
+            #     print(message)
+            return found_messages
+        else:
+            # print(f"Student with ID {student_id} not found.")
+            message = f"No messages Yet!."
+            return message
+  
+
+def delete_community_messages(filepath):
+  # Step 1: Load JSON data from file
+    with open(filepath, 'r') as file:
+        data = json.load(file)
+
+    # Step 4: Filter messages that are within 12 hours
+    data['messages'] = [user for user in data['messages'] if is_within_12_hours(user)]
+
+    # Step 5: Write the updated data back to the file
+    with open(filepath, 'w') as file:
+        json.dump(data, file, indent=4)
+
+    print("Old messages have been deleted successfully!")

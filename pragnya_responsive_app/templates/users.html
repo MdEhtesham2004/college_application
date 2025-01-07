@@ -305,9 +305,9 @@
             {% if show_community_message %}
             <div class="message_community">
                 <h2> Message to Community</h2>
-                <form>
+                <form action="{{ url_for( 'main.send_community_message' ) }}" method="post">
                     <label for="message">Message:</label><br>
-                    <textarea id="message" name="message" required class="inputField"
+                    <textarea id="community_message" name="community_message" required class="inputField"
                         placeholder="Enter Message"></textarea><br>
                     <!-- <button type="submit">Send Message</button> -->
                     <button class="cssbuttonss-io" type="submit">
