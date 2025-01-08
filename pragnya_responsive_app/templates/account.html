@@ -166,23 +166,6 @@
         }
 
         @media screen and (max-width: 768px) {
-
-            /* For smaller screens, make table responsive */
-            /* table,
-            th,
-            td {
-                display: block;
-            }
-
-            th {
-                text-align: left;
-            }
-
-            td {
-                border: none;
-                border-bottom: 1px solid #ddd;
-            } */
-
             .table thead {
                 display: none;
             }
@@ -214,9 +197,6 @@
                 font-weight: 600;
                 font-size: 15px;
                 text-align: left;
-                /* float: left;
-            font-weight: bold;
-            width: 50%; */
             }
         }
 
@@ -293,11 +273,11 @@
 
         @media only screen and (max-width:768px) {
 
-            
+
             .setting_box {
                 width: 60%;
                 height: 70%;
-                top: 8%;
+                top: 15%;
                 /* background-color: white; */
                 transition: all right 0.5s ease-in;
             }
@@ -467,7 +447,8 @@
                     <tr>
                         <td data-label="Title">{{ job.title }}</td>
                         <td data-label="Date-Posted">{{ job.date_posted }}</td>
-                        <td data-label="Organization"><a href="{{ job.organization_url }}" target="_blank">{{ job.organization }}</a></td>
+                        <td data-label="Organization"><a href="{{ job.organization_url }}" target="_blank">{{
+                                job.organization }}</a></td>
                         <td data-label="Source">{{ job.source }}</td>
                         <td data-label="Last-Date">{{ job.date_validthrough }}</td>
                     </tr>
@@ -495,22 +476,34 @@
             </button>
         </form>
 
-        <div class="setting_options">
+        <!-- <div class="setting_options">
              
             <h2>Options:</h2>
             <select name="Options" id="options-dropdown" onchange="handleOptionChange()">
                 <option value="">Select an Option</option>
                 <option value="remove-dp">remove dp 
                  </option>
-                <!-- Add other options here if needed -->
+        
             </select>
-        </div>
+        </div> -->
         <div class="remove_dp">
-            <button>
-            <form action="{{ url_for('main.remove_dp') }}">
-                <a href="{{ url_for('main.remove_dp') }}"> Remove Dp </a>
-            </form>
-        </button>
+            <!-- <button>
+                <form action="{{ url_for('main.remove_dp') }}">
+                    <a href="{{ url_for('main.remove_dp') }}"> Remove Dp </a>
+                </form>
+            </button> -->
+            <button class="cssbuttonss-io" type="submit">
+                <span>
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                        d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
+                        fill="currentColor"></path>
+                    </svg>
+                    <form action="{{ url_for('main.remove_dp') }}">
+                        <a class="links" href="{{ url_for('main.remove_dp') }}">Remove DP</a>
+                    </form>
+                </span>
+            </button>
         </div>
 
     </div>
