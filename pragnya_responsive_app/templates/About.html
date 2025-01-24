@@ -109,19 +109,45 @@
             /* border: 2px solid red; */
         }
 
+        /* 
         .tail_gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
             gap: 10px;
-            /* Adjust the gap between grid items as needed */
+        } */
+        .tail_gallery {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            /* gap: 20px; */
+        }
+        .left_img{
+            width: 70%;
+            /* border: 2px solid red; */
+            flex-wrap: wrap;
+            /* margin-left: 3em; */
+
+            
+        }
+        .left_img img{
+            width: 30%;
+            padding: 3em;
+            
         }
 
-        .tail_gallery img {
+        .long_img{
+            
+            /* border: 2px solid blue; */
+            width: 30%; 
+            /* text-align: center; */
+        }
+
+        .long_img img {
+            /* height: auto; */
             width: 100%;
-            height: auto;
             border-radius: 10px;
-            /* Optional: Add border radius to images */
+            /* padding: 3em; */
         }
     </style>
 </head>
@@ -195,12 +221,16 @@
         </div>
 
         <div class="tail_gallery">
-            <img src="../static/images_folder/ethesham_internship_pic.jpg" alt="ethesham_internship_pic">
-            <img src="../static/images_folder/IMG-20250105-WA0037.jpg" alt="principal_image">
-            <img src="../static/images_folder/IMG-20250106-WA0008.jpg" alt="">
-            <img src="../static/images_folder/IMG-20250106-WA0004.jpg" alt="">
-            <img src="../static/images_folder/IMG-20250105-WA0039.jpg" alt="">
-            
+            <div class="left_img">
+                <img src="../static/images_folder/ethesham_internship_pic.jpg" alt="ethesham_internship_pic">
+                <img src="../static/images_folder/IMG-20250105-WA0037.jpg" alt="principal_image">
+                <img src="../static/images_folder/IMG-20250106-WA0004.jpg" alt="">
+                <img src="../static/images_folder/IMG-20250105-WA0039.jpg" alt="">
+            </div>
+            <div class="long_img">
+                <img src="../static/images_folder/IMG-20250106-WA0008.jpg" alt="">
+            </div>
+
 
         </div>
 
