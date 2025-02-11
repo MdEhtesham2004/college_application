@@ -13,7 +13,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-             /* display: flex;
+            /* display: flex;
             align-items: center;
             justify-content: space-around;
             flex-direction: column;
@@ -39,12 +39,12 @@
         .form-group {
             margin-bottom: 15px;
         }
-        
+
         label {
             display: block;
             font-weight: bold;
         }
-        
+
         input[type="number"],
         input[type="text"] {
             width: 100%;
@@ -61,16 +61,17 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        
+
         .btn:hover {
             background-color: #0056b3;
         }
-        h2{
+
+        h2 {
             margin-bottom: 1.5em;
             font-size: 2em;
         }
     </style>
-<!-- <script src="{{ url_for('static', filename='\scripts\calculator.js') }}"></script> -->
+    <!-- <script src="{{ url_for('static', filename='\scripts\calculator.js') }}"></script> -->
 </head>
 
 <body>
@@ -81,7 +82,7 @@
             <input type="number" id="numSubjects" min="1">
         </div>
         <div class="form-group">
-            <label for="subjectGrades">Grades of Subjects (comma-separated, uppercase):</label>
+            <label for="subjectGrades">Grades of Subjects (comma-separated, Uppercase):</label>
             <input type="text" id="subjectGrades">
         </div>
         <div class="form-group">
@@ -97,77 +98,78 @@
     </div>
     <div>
         <!-- <button onclick="submitData()">Send Data to Flask</button> -->
-    
+
         <form id="myForm" action="/submit_grade" method="POST">
             <input type="hidden" name="my_js_var" id="my_js_var">
         </form>
     </div>
     <script>
-        var grades = null; 
-function calculateCGPA() {
-    var numSubjects = parseInt(document.getElementById('numSubjects').value);
-    var subjectGrades = document.getElementById('subjectGrades').value.toUpperCase().split(',');
-    var numLabs = parseInt(document.getElementById('numLabs').value);
-    var labGrades = document.getElementById('labGrades').value.toUpperCase().split(',');
+        var grades = null;
+        function calculateCGPA() {
+            var numSubjects = parseInt(document.getElementById('numSubjects').value);
+            var subjectGrades = document.getElementById('subjectGrades').value.toUpperCase().split(',');
+            var numLabs = parseInt(document.getElementById('numLabs').value);
+            var labGrades = document.getElementById('labGrades').value.toUpperCase().split(',');
 
-    var result_of_subjects = printCombinedMarks(subjectGrades, true);
-    var result_of_labs = printCombinedMarks(labGrades, false);
+            var result_of_subjects = printCombinedMarks(subjectGrades, true);
+            var result_of_labs = printCombinedMarks(labGrades, false);
 
-    var final_sum = (result_of_subjects + result_of_labs) / (numSubjects * 4 + numLabs * 2).toFixed(2);
-    final_sum = final_sum.toFixed(1)
-    grades=final_sum
-    document.getElementById('result').innerHTML = `
+            var final_sum = (result_of_subjects + result_of_labs) / (numSubjects * 4 + numLabs * 2);
+            final_sum = final_sum.toFixed(1)
+            grades = final_sum
+            document.getElementById('result').innerHTML = `
                 <p>Total Subject Sum: ${result_of_subjects}</p>
                 <p>Total Lab Sum: ${result_of_labs}</p>
                 <p>Your CGPA is: ${final_sum}</p>
             `;
-    submitData();
-}
-
-function printCombinedMarks(marks, isSubjectArray) {
-    var total = 0;
-
-    for (var i = 0; i < marks.length; i++) {
-        switch (marks[i]) {
-            case 'S':
-                total += isSubjectArray ? 40 : 20;
-                break;
-            case 'A':
-                total += isSubjectArray ? 36 : 18;
-                break;
-            case 'B':
-                total += isSubjectArray ? 32 : 16;
-                break;
-            case 'C':
-                total += isSubjectArray ? 28 : 14;
-                break;
-            case 'D':
-                total += isSubjectArray ? 24 : 12;
-            case 'E':
-                total += isSubjectArray ? 20 : 10;
-                break;
-            default:
-                console.log("Invalid grade encountered for element " + i + ": " + marks[i]);
-                break;
+            submitData();
         }
-    }
 
-    return total;
-} 
+        function printCombinedMarks(marks, isSubjectArray) {
+            var total = 0;
+
+            for (var i = 0; i < marks.length; i++) {
+                switch (marks[i]) {
+                    case 'S':
+                        total += isSubjectArray ? 40 : 20;
+                        break;
+                    case 'A':
+                        total += isSubjectArray ? 36 : 18;
+                        break;
+                    case 'B':
+                        total += isSubjectArray ? 32 : 16;
+                        break;
+                    case 'C':
+                        total += isSubjectArray ? 28 : 14;
+                        break;
+                    case 'D':
+                        total += isSubjectArray ? 24 : 12;
+                        break;
+                    case 'E':
+                        total += isSubjectArray ? 20 : 10;
+                        break;
+                    default:
+                        console.log("Invalid grade encountered for element " + i + ": " + marks[i]);
+                        break;
+                }
+            }
+
+            return total;
+        }
 
 
-    
-    function submitData() {
-        // Example JavaScript variable
-        var myVar = grades;
-        
-        // Set the form input value
-        document.getElementById('my_js_var').value = myVar;
 
-        // Submit the form
-        document.getElementById('myForm').submit();
-    }
- </script>
+        function submitData() {
+            // Example JavaScript variable
+            var myVar = grades;
+
+            // Set the form input value
+            document.getElementById('my_js_var').value = myVar;
+
+            // Submit the form
+            document.getElementById('myForm').submit();
+        }
+    </script>
 </body>
 
 {% endblock %}
